@@ -7,7 +7,7 @@
   <b-container marign-bot=20px>
 
 <div>
-    <b-form-group label="Order" v-slot="{ ariaDescribedby }">
+    <b-form-group label="Order" v-slot="{ ariaDescribedby }" @onChange="onSubmit">
       <b-form-radio-group
         v-model="sort"
         :aria-describedby="ariaDescribedby"
@@ -19,7 +19,7 @@
       </b-form-radio-group>
     </b-form-group>
 
-    <b-form-group label="Order Value" v-slot="{ ariaDescribedby }">
+    <b-form-group label="Order Value" v-slot="{ ariaDescribedby }" @onChange="onSubmit">
       <b-form-radio-group
         v-model="sortBy"
         :aria-describedby="ariaDescribedby"
@@ -33,7 +33,7 @@
     </b-form-group>
   </div>
 
-<b-form-group label="Using sub-components:" v-slot="{ ariaDescribedby }">
+<b-form-group label="Categories" v-slot="{ ariaDescribedby }" @onChange="onSubmit">
       <b-form-checkbox-group
         id="checkbox-group-2"
         v-model="filter"
@@ -123,7 +123,7 @@ export default {
   methods: {
     onSubmit() {
       // TODO: NPM server
-    console.log(this.sort +"  "+ this.sort2 +"  "+ this.sortBy + "  " + this.filter);
+    console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
 
 
       axios.get('http://localhost:5050/search?q='+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy+"&filter="+this.filter)
