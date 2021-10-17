@@ -7,9 +7,10 @@
   <b-container marign-bot=20px>
 
 <div>
-    <b-form-group label="Order" v-slot="{ ariaDescribedby }" @onChange="onSubmit">
+    <b-form-group label="Order" v-slot="{ ariaDescribedby }">
       <b-form-radio-group
         v-model="sort"
+        @change="onSubmit()"
         :aria-describedby="ariaDescribedby"
         name="radios-stacked-order"
         stacked
@@ -19,9 +20,10 @@
       </b-form-radio-group>
     </b-form-group>
 
-    <b-form-group label="Order Value" v-slot="{ ariaDescribedby }" @onChange="onSubmit">
+    <b-form-group label="Order Value" v-slot="{ ariaDescribedby }" @change="onSubmit()">
       <b-form-radio-group
         v-model="sortBy"
+        @change="onSubmit()"
         :aria-describedby="ariaDescribedby"
         name="radios-stacked-order-values"
         stacked
@@ -33,10 +35,11 @@
     </b-form-group>
   </div>
 
-<b-form-group label="Categories" v-slot="{ ariaDescribedby }" @onChange="onSubmit">
+<b-form-group label="Categories" v-slot="{ ariaDescribedby }">
       <b-form-checkbox-group
         id="checkbox-group-2"
         v-model="filter"
+        @change="onSubmit()"
         :aria-describedby="ariaDescribedby"
         name="flavour-2"
         stacked
@@ -81,6 +84,8 @@
   </b-container>
     
 </div>
+
+<!-- ADD: number of results & pages & Date Time Range as parameters -->
 
  
 </template>
