@@ -10,7 +10,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-
 const client = new elasticsearch.Client({
     host: 'http://node-1.hska.io:9200',
     log: 'error'
@@ -31,6 +30,9 @@ app.get('/search', function (req, res){
     let name = req.query['q']
     let order = req.query['order']
     let by1 = req.query['by']
+    if(by1 == "normal"){
+        by1 = "_score"
+    }
         
       // let requestBody =  searchBasic("title",name)
       // requestBody = searchSort(requestBody,order,by1);
@@ -44,7 +46,11 @@ app.get('/search', function (req, res){
 
   function searchSortNormal(res,category,name,order,by1){
     const requestBody = new esb.RequestBodySearch()
-    .query(new esb.MatchQuery(category, name)).sort(new esb.sort(by1, order));
+      
+        requestBody.query(new esb.MatchQuery(category, name)).sort(new esb.sort(by1, order));
+          
+      
+    
 
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
         if(results.hits.total.value==0 ){
@@ -58,18 +64,14 @@ app.get('/search', function (req, res){
     .catch(err=>{
         console.log(err)
     });
-
-
-
-
-
-
   }
 
 
   function searchSortFuzzy(res,category,name,order,by1){
     const requestBody = new esb.RequestBodySearch()
-    .query(new esb.FuzzyQuery(category, name)).sort(new esb.sort(by1, order));
+    requestBody.query(new esb.FuzzyQuery(category, name)).sort(new esb.sort(by1, order));
+        
+    
 
 
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
@@ -86,7 +88,18 @@ app.get('/search', function (req, res){
     });
   }
 
-  function searchVideo(order,room){
+
+
+
+app.listen(app.get('port'), function() {
+    console.log('Your node.js server is running on PORT: ',app.get('port'));
+});
+
+
+
+
+
+function searchVideo(order,room){
     client.search({
         index: "youtubechannel",
         body: {
@@ -163,9 +176,3 @@ function renameKey ( obj, oldKey, newKey ) {
     obj[newKey] = obj[oldKey];
     delete obj[oldKey];
   }
-
-
-app.listen(app.get('port'), function() {
-    console.log('Your node.js server is running on PORT: ',app.get('port'));
-});
-

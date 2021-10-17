@@ -6,6 +6,7 @@
         :aria-describedby="ariaDescribedby"
         name="radios-stacked-order"
         stacked
+        @onChange="onSubmit"
       ></b-form-radio-group>
     </b-form-group>
 
