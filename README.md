@@ -27,6 +27,9 @@
 :white_large_square: Allgemeines Desing anpassen  
 :white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird
 
+Notiz bitte im frontend Festlegen dass eine Zahl in Range Videos Feld und im Follower Felder nicht leer sein dürfen!
+Date kann leer sein
+
 
 
 

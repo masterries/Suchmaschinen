@@ -100,7 +100,7 @@
       </div>
 
       <div>
-        <label for="range-followers">Range Videos</label>
+        <label for="range-followers">Range Followers</label>
         <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
         <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
         <b-form-input v-model="followersLower" placeholder="min."></b-form-input>
@@ -232,8 +232,8 @@ export default {
 
 
       axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
-                +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date"+this.date1+";"+this.date2+
-                "&follower"+this.followersLower+"-"+this.followersUpper)
+                +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+this.date1+";"+this.date2+
+                "&follower="+this.followersLower+"-"+this.followersUpper)
         .then((response) => {
               console.log(this.dateRange)
            this.errors =[];
