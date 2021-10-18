@@ -239,7 +239,11 @@ export default {
           endDate: '2019-12-28',
         },
       valueRangeVideos : '',
-      valueRangeFollowers : ''
+      valueRangeFollowers : '',
+      followersUpper : '',
+      followersLower : '',
+      videoLower : '',
+      videoUpper : ''
     }
   },
 
