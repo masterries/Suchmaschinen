@@ -116,14 +116,18 @@
 
       <div> <!-- maybe this is better: http://drewcovi.github.io/bootstrap-range/ -->
         <label for="range-videos">Range Videos</label>
-        <b-form-input id="range-videos" v-model="valueRangeVideos" @change="onSubmit()" type="range" min="0" max="1000000"></b-form-input>
-        <div class="mt-2">Value: {{ valueRangeVideos }}</div>
+        <!--<b-form-input id="range-videos" v-model="valueRangeVideos" @change="onSubmit()" type="range" min="0" max="1000000"></b-form-input>
+        <div class="mt-2">Value: {{ valueRangeVideos }}</div>-->
+        <b-form-input v-model="videoLower" placeholder="min."></b-form-input>
+        <b-form-input v-model="videoUpper" placeholder="max."></b-form-input>
       </div>
 
       <div>
         <label for="range-followers">Range Videos</label>
-        <b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
-        <div class="mt-2">Value: {{ valueRangeFollowers }}</div>
+        <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
+        <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
+        <b-form-input v-model="followersLower" placeholder="min."></b-form-input>
+        <b-form-input v-model="followersUpper" placeholder="max."></b-form-input>
       </div>
 
       
