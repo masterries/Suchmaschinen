@@ -247,12 +247,14 @@ export default {
     console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
     //placeholder Variable
     let range="10-200";
+
     
 
 
       axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
-                +"&filter="+this.filter+"&videoRange="+range)
+                +"&filter="+this.filter+"&videoRange="+range+"&date"+this.dateRange.startDate+";"+this.dateRange.endDate)
         .then((response) => {
+              console.log(this.dateRange)
            this.errors =[];
           console.log(response )
           if (response.data === null) {
