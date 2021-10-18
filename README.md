@@ -41,14 +41,14 @@ Date kann leer sein
 :white_check_mark: Fuzzy Search  
 :white_check_mark: Sorting Search  
 :white_check_mark: Relavanze Sorting Search  
-:white_check_mark: Filter Search
-:white_check_mark: Wie kann ich OR Filter machen aktuell geht nur Single Filter --Multifilter geht jetzt  
+:white_check_mark: Filter Search   
+:white_check_mark: Wie kann ich OR Filter machen aktuell geht nur Single Filter --Multifilter geht jetzt    
 :white_check_mark: Fuzzy Filter Search
 :white_check_mark Video Range Search  
 :white_check_mark: Follower Range Search  
 :white_check_mark: Join Datum Range Search     
-:white_check_mark: Country Search
-:white_large_square: Other Country Search (Not must (gooooooglen))
+:white_check_mark: Country Search  
+:white_large_square: Other Country Search (Not must (gooooooglen))   
 :white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden  
 
 Wichtige link:
