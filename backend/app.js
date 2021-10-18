@@ -35,20 +35,26 @@ app.get('/search', function (req, res){
     let dateRaw = req.query['date']
     let followerRaw = req.query["follower"]
     let filtersRaw = req.query['filter']
+    let countryRaw = req.query['country']
     if(by1 == "normal"){
         by1 = "_score"
     }
     
-    let filterArray = filtersRaw.split(",");
-    let dateRange = dateRaw.split(";");
-    let videoRange = videoRangeRaw.split("-");
-    let followerRange = followerRaw.split("-");
+
+    let filter = {};
+    filter["category"] = filtersRaw.split(",");
+    filter["date"] = dateRaw.split(";");
+    filter["video"] = videoRangeRaw.split("-");
+    filter["follower"] = followerRaw.split("-");
+    filter["country"] = countryRaw.split(",");
+    //console.log(countryRange);
+    //console.log(filter["category"])
 
     
     if(name == ""){
-        send(res,"all","title",name,filterArray,dateRange,videoRange,followerRange,order,by1);
+        send(res,"all","title",name,filter,order,by1);
     }else{
-        send(res,"match","title",name,filterArray,dateRange,videoRange,followerRange,order,by1);
+        send(res,"match","title",name,filter,order,by1);
     }
 
 
@@ -74,15 +80,14 @@ app.get('/search', function (req, res){
     
   })
 
-  function send(res,queryType,title,name,filterArray,dateRange,videoRange,followerRange,order,by1){
+  function send(res,queryType,title,name,filter,order,by1){
 
-    requestBody = filter(queryType,title,name,filterArray,dateRange,videoRange,followerRange);
+    requestBody = filterExc(queryType,title,name,filter);
     sort(requestBody,order,by1);
     
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
             if(results.hits.total.value ==0&& queryType!="fuzzy"){
-                console.log("fuzzy SdsafsaddsadsadsA")
-                send(res,"fuzzy",title,name,filterArray,dateRange,videoRange,followerRange,order,by1);
+                send(res,"fuzzy",title,name,filter,order,by1);
             }else{
                 res.send(results.hits.hits);
             }
@@ -97,7 +102,7 @@ app.get('/search', function (req, res){
   }
 
 
-  function filter(queryType,title,name,filterArray,dateRange,videoRange,followerRange){
+  function filterExc(queryType,title,name,filter){
 
     const body = esb.requestBodySearch()
     typ = 0;
@@ -119,17 +124,27 @@ app.get('/search', function (req, res){
 
 
     
-    if(videoRange != 0){
-        typ.filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]));
+    if(filter["video"] != 0){
+        typ.filter(esb.rangeQuery('videos').gte(filter["video"][0]).lte(filter["video"][1]));
     }
-    if(followerRange != 0){
-        typ.filter(esb.rangeQuery('followers').gte(followerRange[0]).lte(followerRange[1]));
+    if(filter["follower"] != 0){
+        typ.filter(esb.rangeQuery('followers').gte(filter["follower"][0]).lte(filter["follower"][1]));
     }
-    if(dateRange[0] != "" && dateRange[1] != ""){
-        typ.filter(esb.rangeQuery('join_date').gte(dateRange[0]).lte(dateRange[1]))
+    if(filter["date"][0] != "" && filter["date"][1] != ""){
+        typ.filter(esb.rangeQuery('join_date').gte(filter["date"][0]).lte(filter["date"][1]))
     }
-    if(filterArray!=0){
-        typ.filter(esb.termsQuery("category_id", filterArray))
+    if(filter["category"]!=0){
+        typ.filter(esb.termsQuery("category_id",filter["category"]))
+    }
+    if(filter["country"]!=0){
+        var countryArr = filter["country"];
+        if(countryArr.includes("Other")){
+            countryArr = removeItemOnce(countryArr,"Other");
+        }
+        typ.filter(esb.termsQuery("country",countryArr))
+        
+
+        
     }
      a= body.query(typ)
     esb.prettyPrint(a);
@@ -139,6 +154,14 @@ app.get('/search', function (req, res){
 
 
 
+  }
+
+  function removeItemOnce(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
   }
 
 

@@ -103,7 +103,7 @@
             <b-form-checkbox value="Russian Federation">Russian Federation</b-form-checkbox>
             <b-form-checkbox value="Australia">Australia</b-form-checkbox>
             <b-form-checkbox value="Germany">Germany</b-form-checkbox>
-            <b-form-checkbox value="Germany">Other</b-form-checkbox>
+            <b-form-checkbox value="Other">Other</b-form-checkbox>
           </b-form-checkbox-group>
           <b-button pill>Reset filters</b-button> <!-- no funtionality atm -->
         </b-form-group>

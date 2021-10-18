@@ -26,6 +26,8 @@
 :white_large_square: Zurücksetzten aller Filter Button - sendet noch nicht  
 :white_large_square: Allgemeines Desing anpassen    
 :white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird
+:white_large_square: Fixen von Empty Pictures :RED APPLE: 
+:white_large_square: Message wenn Land = null :GREEN APPLE: 
 
 Notiz bitte im frontend Festlegen dass eine Zahl in Range Videos Feld und im Follower Felder nicht leer sein dürfen!
 Date kann leer sein
@@ -45,7 +47,8 @@ Date kann leer sein
 :white_check_mark Video Range Search  
 :white_check_mark: Follower Range Search  
 :white_check_mark: Join Datum Range Search     
-:white_large_square: Country Search + Exclude mit Other Country   
+:white_check_mark: Country Search
+:white_large_square: Other Country Search (Not must (gooooooglen))
 :white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden  
 
 Wichtige link:

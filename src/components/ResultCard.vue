@@ -14,6 +14,7 @@
     Follower : {{content._source.followers}} <br>
     Join Date : {{content._source.join_date}} <br>
     Videos : {{content._source.videos}} 
+    Country : {{content._source.country}} 
     </b-card-text>
 
     <b-button :href="`${content._source.profile_url}`" variant="primary">Go to {{content._source.title}} on Youtube</b-button>
