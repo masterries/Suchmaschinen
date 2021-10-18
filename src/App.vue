@@ -243,11 +243,15 @@ export default {
   methods: {
     onSubmit() {
       // TODO: NPM server
-      console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
- 
+    
+    console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
+    //placeholder Variable
+    let range="10-200";
+    
 
 
-      axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy+"&filter="+this.filter)
+      axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
+                +"&filter="+this.filter+"&videoRange="+range)
         .then((response) => {
            this.errors =[];
           console.log(response )
