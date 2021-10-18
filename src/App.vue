@@ -3,9 +3,12 @@
 
 <div id="app">
   <searchbar v-model="searchQuery" @input="onSubmit" v-on:click="onSubmit"/>
-          <div class="alert alert-danger" v-if="errors.length !=0">
-              <p>{{errors.message}} {{errors.name}}</p>
-              <p>Request : {{errors.config.url}}</p>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="errors.length !=0" width="150">
+           <h4 class="alert-heading text-center"><b-icon-exclamation-triangle-fill></b-icon-exclamation-triangle-fill> 
+           Oops! Something went wrong.</h4>
+              <p class="text-center">{{errors.message}} {{errors.name}}</p>
+              <p class="text-center">Request : {{errors.config.url}}</p>
+
     </div>
   
 
