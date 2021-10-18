@@ -5,7 +5,7 @@
         v-model="selected"
         :options="options"
         :aria-describedby="ariaDescribedby"
-        name="radios-stacked-order-values"
+        name="radios-stacked"
         stacked
       ></b-form-radio-group>
     </b-form-group>

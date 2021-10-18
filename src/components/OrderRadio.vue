@@ -6,7 +6,6 @@
         :aria-describedby="ariaDescribedby"
         name="radios-stacked-order"
         stacked
-        @onChange="onSubmit"
       ></b-form-radio-group>
     </b-form-group>
 
@@ -24,6 +23,7 @@
   },
     data() {
       return {
+        sort: 'desc',
         options: [
           { text: 'Ascending', value: 'asc' },
           { text: 'Descending', value: 'desc' }

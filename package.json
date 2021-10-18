@@ -19,7 +19,8 @@
     "elasticsearch": "^16.7.2",
     "express": "^4.17.1",
     "vue": "^2.6.11",
-    "vue-meta": "^2.4.0"
+    "vue-meta": "^2.4.0",
+    "vue2-daterange-picker": "^0.6.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

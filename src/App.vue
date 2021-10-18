@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 <template>
 
 
@@ -81,9 +82,51 @@
             <b-form-checkbox value="19">Travel and Events</b-form-checkbox>
             <b-form-checkbox value="15">Pets and Animals</b-form-checkbox>
           </b-form-checkbox-group>
+          <b-button pill>Reset filters</b-button> <!-- no funtionality atm -->
         </b-form-group>
       </div>
 
+      <div name="country-div">
+        <b-form-group label="Countries" v-slot="{ ariaDescribedby }">
+          <b-form-checkbox-group
+            id="checkbox-group-countries"
+            v-model="filterCountry"
+            @change="onSubmit()"
+            :aria-describedby="ariaDescribedby"
+            name="country"
+            stacked
+          >
+            <b-form-checkbox value="Country1">Country1</b-form-checkbox>
+            <b-form-checkbox value="Country2">Country2</b-form-checkbox>
+            <b-form-checkbox value="Country3">Country3</b-form-checkbox>
+            <b-form-checkbox value="Country4">Country4</b-form-checkbox>
+            <b-form-checkbox value="Country5">Country5</b-form-checkbox>
+            <b-form-checkbox value="Country6">Country6</b-form-checkbox>
+            <b-form-checkbox value="Country7">Country7</b-form-checkbox>
+            <b-form-checkbox value="Country8">Country8</b-form-checkbox>
+          </b-form-checkbox-group>
+          <b-button pill>Reset filters</b-button> <!-- no funtionality atm -->
+        </b-form-group>
+      </div>
+
+      <div name="datepicker-div"> <!-- possible other solution? https://innologica.github.io/vue2-daterange-picker -->
+        <b-form-datepicker id="datepicker1" v-model="date1" @change="onSubmit()" @context="onContext1" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation1" />
+        <b-form-datepicker id="datepicker2" v-model="date2" @change="onSubmit()" @context="onContext2" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation2" />     
+      </div>
+
+      <div> <!-- maybe this is better: http://drewcovi.github.io/bootstrap-range/ -->
+        <label for="range-videos">Range Videos</label>
+        <b-form-input id="range-videos" v-model="valueRangeVideos" @change="onSubmit()" type="range" min="0" max="1000000"></b-form-input>
+        <div class="mt-2">Value: {{ valueRangeVideos }}</div>
+      </div>
+
+      <div>
+        <label for="range-followers">Range Videos</label>
+        <b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
+        <div class="mt-2">Value: {{ valueRangeFollowers }}</div>
+      </div>
+
+      
     </b-container>
     <!-- ADD: number of results & pages & Date Time Range as parameters -->
   </div>
@@ -170,27 +213,37 @@ export default {
   },
 
   data() {
+    const now = new Date()
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+    const minDate = new Date("2000-01-01")
+    const maxDate = new Date(today)
+
     return {
       sort : "desc",
       searchQuery: '',
       searchResults: [],
       sortBy : "followers",
       filter : [],
-      errors :[]
- 
+      filterCountry : [],
+      errors :[],
+      date1 : '',
+      date2 : '',
+      min: minDate,
+      max: maxDate,
+      dateRange: {
+          startDate: '2019-12-26',
+          endDate: '2019-12-28',
+        },
+      valueRangeVideos : '',
+      valueRangeFollowers : ''
     }
   },
 
-  
-
-
-
-  
 
   methods: {
     onSubmit() {
       // TODO: NPM server
-    console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
+      console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
  
 
 
@@ -213,8 +266,34 @@ export default {
           }
           this.searchResults = []
         })
+    },
+
+//trying to display validation of the two dates but somethings off
+    onContext1(context){
+      if (context.date1 == null) {
+        this.dateValidation1 = null
+      }else{
+        if (context.date1 > this.date2) {
+          this.dateValidation1 = false
+        }else{
+          this.dateValidation1 = true
+        }
+      }      
+    },
+
+    onContext2(context){
+      if (context.date2 == null) {
+        this.dateValidation2 = null
+      }else{
+        if (context.date2 < this.date1) {
+          this.dateValidation2 = false
+        }else{
+          this.dateValidation2 = true
+        }
+      }      
     }
   },
+
   beforeMount(){
     this.onSubmit();
   }
