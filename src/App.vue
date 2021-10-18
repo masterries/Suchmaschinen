@@ -86,29 +86,6 @@
         </b-form-group>
       </div>
 
-      <div name="country-div">
-        <b-form-group label="Countries" v-slot="{ ariaDescribedby }">
-          <b-form-checkbox-group
-            id="checkbox-group-countries"
-            v-model="filterCountry"
-            @change="onSubmit()"
-            :aria-describedby="ariaDescribedby"
-            name="country"
-            stacked
-          >
-            <b-form-checkbox value="Country1">Country1</b-form-checkbox>
-            <b-form-checkbox value="Country2">Country2</b-form-checkbox>
-            <b-form-checkbox value="Country3">Country3</b-form-checkbox>
-            <b-form-checkbox value="Country4">Country4</b-form-checkbox>
-            <b-form-checkbox value="Country5">Country5</b-form-checkbox>
-            <b-form-checkbox value="Country6">Country6</b-form-checkbox>
-            <b-form-checkbox value="Country7">Country7</b-form-checkbox>
-            <b-form-checkbox value="Country8">Country8</b-form-checkbox>
-          </b-form-checkbox-group>
-          <b-button pill>Reset filters</b-button> <!-- no funtionality atm -->
-        </b-form-group>
-      </div>
-
       <div name="datepicker-div"> <!-- possible other solution? https://innologica.github.io/vue2-daterange-picker -->
         <b-form-datepicker id="datepicker1" v-model="date1" @change="onSubmit()" @context="onContext1" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation1" />
         <b-form-datepicker id="datepicker2" v-model="date2" @change="onSubmit()" @context="onContext2" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation2" />     
