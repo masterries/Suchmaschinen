@@ -37,7 +37,8 @@
 :white_check_mark: Sorting Search  
 :white_check_mark: Relavanze Sorting Search  
 :white_check_mark: Filter Search
-:white_check_mark: Wie kann ich OR Filter machen aktuell geht nur Single Filter --Multifilter geht jetzt   
+:white_check_mark: Wie kann ich OR Filter machen aktuell geht nur Single Filter --Multifilter geht jetzt  
+:white_check_mark: Fuzzy Filter Search
 :white_large_square: Video Range Search  
 :white_large_square: Follower Range Search  
 :white_large_square: Join Datum Range Search   
@@ -46,6 +47,9 @@
 Wichtige link:
 https://elastic-builder.js.org/
 https://blog.logrocket.com/elasticsearch-query-body-builder-node-js/
+
+# Bugs
+Backend Server hängt sich auf ? Zu viele Anfragen? idk
 
 
 

@@ -30,20 +30,23 @@ app.get('/search', function (req, res){
     let name = req.query['q']
     let order = req.query['order']
     let by1 = req.query['by']
+    let videoRangeRaw = req.query['videoRange']
     if(by1 == "normal"){
         by1 = "_score"
     }
     let filtersRaw = req.query['filter']
+
     
     if(filtersRaw != ""){
         let filterArray = filtersRaw.split(",");
-        searchWithFilter(res,"title",name,order,by1,filterArray)
+        let videoRange = videoRangeRaw.split("-");
+        searchWithFilter(res,"title",name,order,by1,filterArray,videoRange)
     }else if(name == ""){
         searchWithOutName(res,order,by1);
     }else{
         searchSortNormal(res,"title",name,order,by1);
-
     }
+
 
 
         
@@ -57,8 +60,9 @@ app.get('/search', function (req, res){
     
   })
 
-  function searchWithFilter(res,category,name,order,by1,filterArray){
+  function searchWithFilter(res,category,name,order,by1,filterArray,videoRange){
       console.log(filterArray)
+      videoRange=[];
     const requestBody = esb.requestBodySearch()
     .query(
       esb.boolQuery()
@@ -68,11 +72,13 @@ app.get('/search', function (req, res){
           ),
         ])
       .filter(esb.termsQuery("category_id", filterArray))
+      .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
     )
     requestBody.sort(new esb.sort(by1, order));
 
+
     console.log(esb.prettyPrint(requestBody));
-          
+       
       
     
 
@@ -96,7 +102,7 @@ app.get('/search', function (req, res){
   function searchWithOutName(res,order,by1){
     const requestBody = esb.requestBodySearch().query(esb.matchAllQuery()).sort(new esb.sort(by1, order));
           
-      
+    console.log(esb.prettyPrint(requestBody));
     
 
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
@@ -144,13 +150,11 @@ app.get('/search', function (req, res){
 
 
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
-        if(results.hits.total.value==0 ){
-            fuzzySend(res,requestBody);
-        }else{
+
             console.log(results)
             res.send(results.hits.hits);
 
-        }
+        
     })
     .catch(err=>{
         console.log(err)
@@ -167,7 +171,7 @@ app.listen(app.get('port'), function() {
 
 
 
-
+/*
 function searchVideo(order,room){
     client.search({
         index: "youtubechannel",
@@ -245,3 +249,4 @@ function renameKey ( obj, oldKey, newKey ) {
     obj[newKey] = obj[oldKey];
     delete obj[oldKey];
   }
+*/
