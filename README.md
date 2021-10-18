@@ -36,11 +36,16 @@
 :white_check_mark: Fuzzy Search  
 :white_check_mark: Sorting Search  
 :white_check_mark: Relavanze Sorting Search  
-:white_large_square: Filter Search  
+:white_check_mark: Filter Search
+NOTIZ: Wie kann ich OR Filter machen aktuell geht nur Single Filter 
 :white_large_square: Video Range Search  
 :white_large_square: Follower Range Search  
 :white_large_square: Join Datum Range Search   
 :white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden
+
+Wichtige link:
+https://elastic-builder.js.org/
+https://blog.logrocket.com/elasticsearch-query-body-builder-node-js/
 
 
 
