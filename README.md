@@ -19,11 +19,11 @@
 :white_check_mark: Error Handling Server   
 :white_check_mark: Bei Starten der Seite gleich Inhalte laden (load on Startup)   
 :white_check_mark: Einfügen eigener CSS   
-:white_large_square: Einfügen von Filter nach Join Datum Range  
-:white_large_square: Einfügen von Filter nach Video Range  
-:white_large_square: Einfügen von Filter nach Follower Range  
-:white_large_square: Einfügen von Filter nach Land  
-:white_large_square: Zurücksetzten aller Filter Button    
+:white_large_square: Einfügen von Filter nach Join Datum Range - verbesserungs bedürftig / sendet noch nicht
+:white_large_square: Einfügen von Filter nach Video Range - verbesserungs bedürftig / sendet noch nicht
+:white_large_square: Einfügen von Filter nach Follower Range - verbesserungs bedürftig / sendet noch nicht
+:white_large_square: Einfügen von Filter nach Land - verbesserungs bedürftig / sendet noch nicht
+:white_large_square: Zurücksetzten aller Filter Button - sendet noch nicht
 :white_large_square: Allgemeines Desing anpassen  
 :white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird
 
