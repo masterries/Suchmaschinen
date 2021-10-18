@@ -19,12 +19,12 @@
 :white_check_mark: Error Handling Server   
 :white_check_mark: Bei Starten der Seite gleich Inhalte laden (load on Startup)   
 :white_check_mark: Einfügen eigener CSS   
-:white_large_square: Einfügen von Filter nach Join Datum Range - verbesserungs bedürftig / sendet noch nicht
-:white_large_square: Einfügen von Filter nach Video Range - verbesserungs bedürftig / sendet noch nicht
-:white_large_square: Einfügen von Filter nach Follower Range - verbesserungs bedürftig / sendet noch nicht
-:white_large_square: Einfügen von Filter nach Land - verbesserungs bedürftig / sendet noch nicht
-:white_large_square: Zurücksetzten aller Filter Button - sendet noch nicht
-:white_large_square: Allgemeines Desing anpassen  
+:white_large_square: Einfügen von Filter nach Join Datum Range - verbesserungs bedürftig / sendet noch nicht  
+:white_large_square: Einfügen von Filter nach Video Range - verbesserungs bedürftig / sendet noch nicht  
+:white_large_square: Einfügen von Filter nach Follower Range - verbesserungs bedürftig / sendet noch nicht  
+:white_large_square: Einfügen von Filter nach Land - verbesserungs bedürftig / sendet noch nicht  
+:white_large_square: Zurücksetzten aller Filter Button - sendet noch nicht  
+:white_large_square: Allgemeines Desing anpassen    
 :white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird
 
 Notiz bitte im frontend Festlegen dass eine Zahl in Range Videos Feld und im Follower Felder nicht leer sein dürfen!
@@ -42,10 +42,11 @@ Date kann leer sein
 :white_check_mark: Filter Search
 :white_check_mark: Wie kann ich OR Filter machen aktuell geht nur Single Filter --Multifilter geht jetzt  
 :white_check_mark: Fuzzy Filter Search
-:white_large_square: Video Range Search  
-:white_large_square: Follower Range Search  
-:white_large_square: Join Datum Range Search   
-:white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden
+:white_check_mark Video Range Search  
+:white_check_mark: Follower Range Search  
+:white_check_mark: Join Datum Range Search     
+:white_large_square: Country Search + Exclude mit Other Country   
+:white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden  
 
 Wichtige link:
 https://elastic-builder.js.org/

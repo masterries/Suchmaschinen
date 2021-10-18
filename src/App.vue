@@ -96,14 +96,14 @@
             name="country"
             stacked
           >
-            <b-form-checkbox value="Country1">Country1</b-form-checkbox>
-            <b-form-checkbox value="Country2">Country2</b-form-checkbox>
-            <b-form-checkbox value="Country3">Country3</b-form-checkbox>
-            <b-form-checkbox value="Country4">Country4</b-form-checkbox>
-            <b-form-checkbox value="Country5">Country5</b-form-checkbox>
-            <b-form-checkbox value="Country6">Country6</b-form-checkbox>
-            <b-form-checkbox value="Country7">Country7</b-form-checkbox>
-            <b-form-checkbox value="Country8">Country8</b-form-checkbox>
+            <b-form-checkbox value="United States">United States</b-form-checkbox>
+            <b-form-checkbox value="Great-Britain">Great-Britain</b-form-checkbox>
+            <b-form-checkbox value="India">India</b-form-checkbox>
+            <b-form-checkbox value="Canada">Canada</b-form-checkbox>
+            <b-form-checkbox value="Russian Federation">Russian Federation</b-form-checkbox>
+            <b-form-checkbox value="Australia">Australia</b-form-checkbox>
+            <b-form-checkbox value="Germany">Germany</b-form-checkbox>
+            <b-form-checkbox value="Germany">Other</b-form-checkbox>
           </b-form-checkbox-group>
           <b-button pill>Reset filters</b-button> <!-- no funtionality atm -->
         </b-form-group>
@@ -256,7 +256,7 @@ export default {
 
       axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
                 +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+this.date1+";"+this.date2+
-                "&follower="+this.followersLower+"-"+this.followersUpper)
+                "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry)
         .then((response) => {
               console.log(this.dateRange)
            this.errors =[];

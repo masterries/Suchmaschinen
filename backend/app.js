@@ -4,6 +4,7 @@ const elasticsearch = require('elasticsearch');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const esb = require('elastic-builder'); //the builder
+const { query } = require('express');
 
 app.set('port', process.env.PORT || 5050 );
 app.use(cors());
@@ -31,21 +32,34 @@ app.get('/search', function (req, res){
     let order = req.query['order']
     let by1 = req.query['by']
     let videoRangeRaw = req.query['videoRange']
+    let dateRaw = req.query['date']
+    let followerRaw = req.query["follower"]
+    let filtersRaw = req.query['filter']
     if(by1 == "normal"){
         by1 = "_score"
     }
-    let filtersRaw = req.query['filter']
+    
+    let filterArray = filtersRaw.split(",");
+    let dateRange = dateRaw.split(";");
+    let videoRange = videoRangeRaw.split("-");
+    let followerRange = followerRaw.split("-");
 
     
-    if(filtersRaw != ""){
-        let filterArray = filtersRaw.split(",");
-        let videoRange = videoRangeRaw.split("-");
-        searchWithFilter(res,"title",name,order,by1,filterArray,videoRange)
-    }else if(name == ""){
-        searchWithOutName(res,order,by1);
+    if(name == ""){
+        send(res,"all","title",name,filterArray,dateRange,videoRange,followerRange,order,by1);
     }else{
-        searchSortNormal(res,"title",name,order,by1);
+        send(res,"match","title",name,filterArray,dateRange,videoRange,followerRange,order,by1);
     }
+
+
+    
+   // if(filtersRaw != "" && name != ""){
+     //   send(res,searchWithFilter(res,"title",name,order,by1,filterArray));
+    //}else if(name == ""){
+      //  searchWithOutNameFilter(res,order,by1,filterArray);
+    //}else{
+      //  searchSortNormal(res,"title",name,order,by1);
+    //}
 
 
 
@@ -60,7 +74,85 @@ app.get('/search', function (req, res){
     
   })
 
-  function searchWithFilter(res,category,name,order,by1,filterArray,videoRange){
+  function send(res,queryType,title,name,filterArray,dateRange,videoRange,followerRange,order,by1){
+
+    requestBody = filter(queryType,title,name,filterArray,dateRange,videoRange,followerRange);
+    sort(requestBody,order,by1);
+    
+    client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
+            if(results.hits.total.value ==0&& queryType!="fuzzy"){
+                console.log("fuzzy SdsafsaddsadsadsA")
+                send(res,"fuzzy",title,name,filterArray,dateRange,videoRange,followerRange,order,by1);
+            }else{
+                res.send(results.hits.hits);
+            }
+
+
+        
+    })
+    .catch(err=>{
+        console.log(err)
+    });
+      
+  }
+
+
+  function filter(queryType,title,name,filterArray,dateRange,videoRange,followerRange){
+
+    const body = esb.requestBodySearch()
+    typ = 0;
+    switch (queryType){
+        case "all":
+            typ = esb.boolQuery().must([esb.matchAllQuery()]);
+
+        break;
+
+        case "match":
+            typ =  esb.boolQuery().must([esb.matchQuery(title, name,)]);
+
+        break;
+        case "fuzzy":
+            typ =  esb.boolQuery().must([esb.fuzzyQuery(title, name,)]);
+
+        break;
+    }
+
+
+    
+    if(videoRange != 0){
+        typ.filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]));
+    }
+    if(followerRange != 0){
+        typ.filter(esb.rangeQuery('followers').gte(followerRange[0]).lte(followerRange[1]));
+    }
+    if(dateRange[0] != "" && dateRange[1] != ""){
+        typ.filter(esb.rangeQuery('join_date').gte(dateRange[0]).lte(dateRange[1]))
+    }
+    if(filterArray!=0){
+        typ.filter(esb.termsQuery("category_id", filterArray))
+    }
+     a= body.query(typ)
+    esb.prettyPrint(a);
+    
+     return body.query(typ);
+     
+
+
+
+  }
+
+
+  function sort(requestBody,order,by1){
+      return requestBody.sort(new esb.sort(by1, order));
+  }
+
+  function searchAll(){
+    return esb.requestBodySearch().query(esb.matchAllQuery());
+  }
+
+  
+
+  function searchWithFilter(res,category,name,order,by1,filterArray){
       console.log(filterArray)
       videoRange=[];
     const requestBody = esb.requestBodySearch()
@@ -72,24 +164,22 @@ app.get('/search', function (req, res){
           ),
         ])
       .filter(esb.termsQuery("category_id", filterArray))
-      .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
+ //     .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
     )
     requestBody.sort(new esb.sort(by1, order));
 
 
-    console.log(esb.prettyPrint(requestBody));
+ 
        
       
     
 
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
-        if(results.hits.total.value==0 ){
-            //searchSortFuzzy(res,category,name,order,by1);
-        }else{
+       
             //console.log(results)
             res.send(results.hits.hits);
 
-        }
+        
     })
     .catch(err=>{
         console.log(err)
@@ -99,25 +189,8 @@ app.get('/search', function (req, res){
 
 
 
-  function searchWithOutName(res,order,by1){
-    const requestBody = esb.requestBodySearch().query(esb.matchAllQuery()).sort(new esb.sort(by1, order));
-          
-    console.log(esb.prettyPrint(requestBody));
-    
 
-    client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
-        if(results.hits.total.value==0 ){
-            searchSortFuzzy(res,category,name,order,by1);
-        }else{
-            console.log(results)
-            res.send(results.hits.hits);
 
-        }
-    })
-    .catch(err=>{
-        console.log(err)
-    });
-  }
 
   function searchSortNormal(res,category,name,order,by1){
     const requestBody = new esb.RequestBodySearch()
@@ -248,5 +321,100 @@ function fuzzySend(res,requestBody){
 function renameKey ( obj, oldKey, newKey ) {
     obj[newKey] = obj[oldKey];
     delete obj[oldKey];
+  }
+
+
+  function searchAllFilter(filterArray,dateRange,videoRange,followerRange){
+     const body = esb.requestBodySearch()
+     
+
+     if(videoRange != "" && followerRange!= "" && dateRange[0] != "" && dateRange[1] != "" && filterArray!=0){
+        body.query(esb.boolQuery().must([esb.matchAllQuery()])
+            .filter(esb.termsQuery("category_id", filterArray))
+           .filter(esb.rangeQuery('join_date').gte(dateRange[0]).lte(dateRange[1]))
+           .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
+           .filter(esb.rangeQuery('followers').gte(followerRange[0]).lte(followerRange[1]))
+          )
+
+     } else if(videoRange != "" && followerRange!= "" && dateRange[0] != "" && dateRange[1] != ""){
+         console.log("Cat + Videos + Follower")
+        body.query(
+            esb.boolQuery()
+              .must([
+                esb.matchAllQuery()
+              ])
+           .filter(esb.rangeQuery('join_date').gte(dateRange[0]).lte(dateRange[1]))
+           .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
+           .filter(esb.rangeQuery('followers').gte(followerRange[0]).lte(followerRange[1]))
+          )
+         
+     }
+     else if(videoRange != "" &&filterArray!=0 && dateRange[0] != "" && dateRange[1] != ""){
+         
+        body.query(
+            esb.boolQuery()
+              .must([
+                esb.matchAllQuery()
+              ])
+           .filter(esb.rangeQuery('join_date').gte(dateRange[0]).lte(dateRange[1]))
+           .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
+           .filter(esb.termsQuery("category_id", filterArray))
+          ) 
+         
+     }else if(followerRange!= "" &&filterArray!=0 && dateRange[0] != "" && dateRange[1] != ""){
+         
+        body.query(
+            esb.boolQuery()
+              .must([
+                esb.matchAllQuery()
+              ])
+           .filter(esb.rangeQuery('join_date').gte(dateRange[0]).lte(dateRange[1]))
+           .filter(esb.rangeQuery('followers').gte(followerRange[0]).lte(followerRange[1]))
+           .filter(esb.termsQuery("category_id", filterArray))
+          ) 
+         
+     }else if(followerRange!= "" &&filterArray!=0 && videoRange != ""){
+         
+        body.query(
+            esb.boolQuery()
+              .must([
+                esb.matchAllQuery()
+              ])
+            .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
+           .filter(esb.rangeQuery('followers').gte(followerRange[0]).lte(followerRange[1]))
+           .filter(esb.termsQuery("category_id", filterArray))
+          ) 
+
+    }else if(followerRange!= "" &&filterArray!=0 && videoRange != ""){
+         
+            body.query(
+                esb.boolQuery()
+                  .must([
+                    esb.matchAllQuery()
+                  ])
+                .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
+               .filter(esb.rangeQuery('followers').gte(followerRange[0]).lte(followerRange[1]))
+               .filter(esb.termsQuery("category_id", filterArray))
+              ) 
+    
+        }          
+          else{
+            body.query(
+                esb.boolQuery()
+                  .must([
+                    esb.matchAllQuery()
+                  ])
+              )
+
+          }
+    esb.prettyPrint(body);
+    const a = esb.boolQuery().must([esb.matchAllQuery()]).filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]));
+    a.filter(esb.rangeQuery('followers').gte(followerRange[0]).lte(followerRange[1]));
+    body.query(a)
+     return body;
+
+
+
+    
   }
 */
