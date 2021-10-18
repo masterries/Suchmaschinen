@@ -10,6 +10,8 @@
               <p class="text-center">Request : {{errors.config.url}}</p>
 
     </div>
+
+    
   
 
 
@@ -111,12 +113,36 @@
       </b-col>
     </b-row>
 
+    
+     <div class="footer">
+
+
+     <div id="button"></div>
+
+     <div id="container">
+        <div id="cont"></div>
+        <div class="footer_center">
+          <!-- img src=".\image\android-chrome-192x192.png" alt="Random Logo"> -->
+          <h3>Vorlesung Suchmaschinen von B.Sc. Michael Siebers </h3>
+          <h3>Seite Entwickelt von Patrick Ries (pari1012) und Kai Schwark (scka1066)</h3>
+ 
+        </div>
+
+     </div>
+  </div>
+
   </b-container>
+
+
+ 
+
+  
   
 
   
   
 </div>
+
  
 </template>
 
@@ -194,3 +220,9 @@ export default {
   }
 }
 </script>
+
+
+
+<style >
+@import '/assets/reset.css';
+</style>
