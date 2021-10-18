@@ -207,20 +207,16 @@ export default {
       filter : [],
       filterCountry : [],
       errors :[],
-      date1 : '',
-      date2 : '',
+      date1 : '2009-12-26',
+      date2 : '2019-12-28',
       min: minDate,
       max: maxDate,
-      dateRange: {
-          startDate: '2019-12-26',
-          endDate: '2019-12-28',
-        },
       valueRangeVideos : '',
       valueRangeFollowers : '',
-      followersUpper : '',
-      followersLower : '',
-      videoLower : '',
-      videoUpper : ''
+      followersUpper : '10000000',
+      followersLower : '1',
+      videoLower : '1',
+      videoUpper : '100000'
     }
   },
 
@@ -231,13 +227,13 @@ export default {
     
     console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
     //placeholder Variable
-    let range="10-200";
 
     
 
 
       axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
-                +"&filter="+this.filter+"&videoRange="+range+"&date"+this.dateRange.startDate+";"+this.dateRange.endDate)
+                +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date"+this.date1+";"+this.date2+
+                "&follower"+this.followersLower+"-"+this.followersUpper)
         .then((response) => {
               console.log(this.dateRange)
            this.errors =[];
