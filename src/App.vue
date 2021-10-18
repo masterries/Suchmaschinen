@@ -118,6 +118,8 @@ import resultCard from './components/ResultCard.vue';
 import searchbar from './components/Searchbar.vue';
 import axios from 'axios';
 
+  
+
 export default {
   name: 'App',
 
@@ -150,6 +152,7 @@ export default {
     onSubmit() {
       // TODO: NPM server
     console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
+ 
 
 
       axios.get('http://localhost:5050/search?q='+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy+"&filter="+this.filter)
@@ -166,6 +169,9 @@ export default {
           this.searchResults = []
         })
     }
+  },
+  beforeMount(){
+    this.onSubmit();
   }
 }
 </script>

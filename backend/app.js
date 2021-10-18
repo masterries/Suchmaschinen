@@ -33,6 +33,10 @@ app.get('/search', function (req, res){
     if(by1 == "normal"){
         by1 = "_score"
     }
+
+    if(name == ""){
+        searchWithOutName(res,order,by1);
+    }
         
       // let requestBody =  searchBasic("title",name)
       // requestBody = searchSort(requestBody,order,by1);
@@ -43,6 +47,26 @@ app.get('/search', function (req, res){
    
     
   })
+
+  function searchWithOutName(res,order,by1){
+    const requestBody = esb.requestBodySearch().query(esb.matchAllQuery()).sort(new esb.sort(by1, order));
+          
+      
+    
+
+    client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
+        if(results.hits.total.value==0 ){
+            searchSortFuzzy(res,category,name,order,by1);
+        }else{
+            console.log(results)
+            res.send(results.hits.hits);
+
+        }
+    })
+    .catch(err=>{
+        console.log(err)
+    });
+  }
 
   function searchSortNormal(res,category,name,order,by1){
     const requestBody = new esb.RequestBodySearch()
