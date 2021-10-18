@@ -37,7 +37,6 @@ app.get('/search', function (req, res){
     
     if(filtersRaw != ""){
         let filterArray = filtersRaw.split(",");
-        console.log(filterArray)
         searchWithFilter(res,"title",name,order,by1,filterArray)
     }else if(name == ""){
         searchWithOutName(res,order,by1);
@@ -59,6 +58,7 @@ app.get('/search', function (req, res){
   })
 
   function searchWithFilter(res,category,name,order,by1,filterArray){
+      console.log(filterArray)
     const requestBody = esb.requestBodySearch()
     .query(
       esb.boolQuery()
@@ -67,18 +67,20 @@ app.get('/search', function (req, res){
             category, name,
           ),
         ])
-      .filter(esb.termQuery("category_name", filterArray[0]))
+      .filter(esb.termsQuery("category_id", filterArray))
     )
     requestBody.sort(new esb.sort(by1, order));
+
+    console.log(esb.prettyPrint(requestBody));
           
       
     
 
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
         if(results.hits.total.value==0 ){
-            searchSortFuzzy(res,category,name,order,by1);
+            //searchSortFuzzy(res,category,name,order,by1);
         }else{
-            console.log(results)
+            //console.log(results)
             res.send(results.hits.hits);
 
         }

@@ -66,20 +66,20 @@
             name="flavour-2"
             stacked
           >
-            <b-form-checkbox value="Music">Music</b-form-checkbox>
-            <b-form-checkbox value="Entertainment">Entertainment</b-form-checkbox>
-            <b-form-checkbox value="Gaming">Gaming</b-form-checkbox>
-            <b-form-checkbox value="People_n_Blogs">People and Blogs</b-form-checkbox>
-            <b-form-checkbox value="Howto_n_Style">Howto and Style</b-form-checkbox>
-            <b-form-checkbox value="Education">Education</b-form-checkbox>
-            <b-form-checkbox value="Film_and_Animation">Film and Animation</b-form-checkbox>
-            <b-form-checkbox value="Sports">Sports</b-form-checkbox>
-            <b-form-checkbox value="Science_n_Technology">Science and Technology</b-form-checkbox>
-            <b-form-checkbox value="Comedy">Comedy</b-form-checkbox>
-            <b-form-checkbox value="Autos_n_Vehicles">Autos_and_Vehicles</b-form-checkbox>
-            <b-form-checkbox value="News_n_Politics">News and Politics</b-form-checkbox>
-            <b-form-checkbox value="Travel_n_Events">Travel and Events</b-form-checkbox>
-            <b-form-checkbox value="Pets_n_Animals">Pets and Animals</b-form-checkbox>
+            <b-form-checkbox value="10">Music</b-form-checkbox>
+            <b-form-checkbox value="24">Entertainment</b-form-checkbox>
+            <b-form-checkbox value="20">Gaming</b-form-checkbox>
+            <b-form-checkbox value="22">People and Blogs</b-form-checkbox>
+            <b-form-checkbox value="26">Howto and Style</b-form-checkbox>
+            <b-form-checkbox value="27">Education</b-form-checkbox>
+            <b-form-checkbox value="1">Film and Animation</b-form-checkbox>
+            <b-form-checkbox value="17">Sports</b-form-checkbox>
+            <b-form-checkbox value="28">Science and Technology</b-form-checkbox>
+            <b-form-checkbox value="23">Comedy</b-form-checkbox>
+            <b-form-checkbox value="2">Autos_and_Vehicles</b-form-checkbox>
+            <b-form-checkbox value="25">News and Politics</b-form-checkbox>
+            <b-form-checkbox value="19">Travel and Events</b-form-checkbox>
+            <b-form-checkbox value="15">Pets and Animals</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
       </div>
