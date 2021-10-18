@@ -17,7 +17,8 @@
 
 # Todo Frontend
 :white_check_mark: Error Handling Server   
-:white_check_mark: Bei Starten der Seite gleich Inhalte laden (load on Startup)  
+:white_check_mark: Bei Starten der Seite gleich Inhalte laden (load on Startup) 
+:white_check_mark: Einfügen eigener CSS   
 :white_large_square: Einfügen von Filter nach Join Datum Range  
 :white_large_square: Einfügen von Filter nach Video Range  
 :white_large_square: Einfügen von Filter nach Follower Range  
