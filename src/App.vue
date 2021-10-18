@@ -11,6 +11,10 @@
               <p class="text-center">Request : {{errors.config.url}}</p>
 
     </div>
+              <div class="alert alert-secondary" role="alert" v-if="sugg" width="150">
+              <p class="text-center">Suggestion ? (BETA) {{sugg}}</p>
+
+    </div>
 
     
   
@@ -95,7 +99,7 @@
             :aria-describedby="ariaDescribedby"
             name="country"
             stacked
-          >
+          > 
             <b-form-checkbox value="United States">United States</b-form-checkbox>
             <b-form-checkbox value="Great-Britain">Great-Britain</b-form-checkbox>
             <b-form-checkbox value="India">India</b-form-checkbox>
@@ -239,7 +243,8 @@ export default {
       followersUpper : '10000000',
       followersLower : '1',
       videoLower : '1',
-      videoUpper : '100000'
+      videoUpper : '100000',
+      sugg: ""
     }
   },
 
@@ -258,8 +263,9 @@ export default {
                 +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+this.date1+";"+this.date2+
                 "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry)
         .then((response) => {
-              console.log(this.dateRange)
            this.errors =[];
+           this.sugg = response.data[0]._source.Suggestion;
+           console.log(this.sugg);
           console.log(response )
           if (response.data === null) {
             this.searchResults = [];

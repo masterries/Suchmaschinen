@@ -25,12 +25,10 @@
 :white_large_square: Einfügen von Filter nach Land - verbesserungs bedürftig / sendet noch nicht  
 :white_large_square: Zurücksetzten aller Filter Button - sendet noch nicht  
 :white_large_square: Allgemeines Desing anpassen    
-:white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird
-:white_large_square: Fixen von Empty Pictures :RED APPLE: 
-:white_large_square: Message wenn Land = null :GREEN APPLE: 
+:white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird   
+:white_large_square: Fixen von Empty Pictures   
+:white_large_square: Message wenn Land = null     
 
-Notiz bitte im frontend Festlegen dass eine Zahl in Range Videos Feld und im Follower Felder nicht leer sein dürfen!
-Date kann leer sein
 
 
 
@@ -49,7 +47,8 @@ Date kann leer sein
 :white_check_mark: Join Datum Range Search     
 :white_check_mark: Country Search  
 :white_check_mark: Other Country Search (Not must (gooooooglen))   
-:white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden  
+:white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden   (BETA)
+scheint irgendwie wired Verhalten 
 
 Wichtige link:
 https://elastic-builder.js.org/

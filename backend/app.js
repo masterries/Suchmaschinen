@@ -52,9 +52,9 @@ app.get('/search', function (req, res){
 
     
     if(name == ""){
-        send(res,"all","title",name,filter,order,by1);
+        send(res,"all","title",name,filter,order,by1,req);
     }else{
-        send(res,"match","title",name,filter,order,by1);
+        send(res,"match","title",name,filter,order,by1,req);
     }
 
 
@@ -80,15 +80,40 @@ app.get('/search', function (req, res){
     
   })
 
-  function send(res,queryType,title,name,filter,order,by1){
+  sugg ="";
 
-    requestBody = filterExc(queryType,title,name,filter);
+  function send(res,queryType,title0,name,filter,order,by1){
+
+    requestBody = filterExc(queryType,title0,name,filter);
     sort(requestBody,order,by1);
     
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
             if(results.hits.total.value ==0&& queryType!="fuzzy"){
-                send(res,"fuzzy",title,name,filter,order,by1);
+                send(res,"fuzzy",title0,name,filter,order,by1);
             }else{
+                let body1 = esb.requestBodySearch();
+                body1.query(esb.multiMatchQuery([ "title","title._2gram","title._3gram"],name)).size(1);
+                esb.prettyPrint(body1);
+
+                client.search({
+                    index: "youtubechannel_auto",
+                    body: body1
+                })
+                .then(response => {
+                    if(response.hits.hits !=0){
+                        a = response.hits.hits;
+                        sugg  = a[0]._source.title;
+                    }
+
+                })
+
+               
+                console.log(sugg)
+                if(sugg != 0){
+                    results.hits.hits[0]._source["Suggestion"] = sugg;
+                    console.log(results.hits.hits[0]._source);
+                }
+                //console.log(results)
                 res.send(results.hits.hits);
             }
 
