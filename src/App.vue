@@ -3,6 +3,10 @@
 
 <div id="app">
   <searchbar v-model="searchQuery" @input="onSubmit" v-on:click="onSubmit"/>
+          <div class="alert alert-danger" v-if="errors.length !=0">
+              <p>{{errors.message}} {{errors.name}}</p>
+              <p>Request : {{errors.config.url}}</p>
+    </div>
   
 
 
@@ -13,6 +17,8 @@
 <div name="menu">
 
     <b-container>
+
+
 
       <div name="order-div">
         <b-form-group label="Order" v-slot="{ ariaDescribedby }">
@@ -117,6 +123,8 @@
 import resultCard from './components/ResultCard.vue';
 import searchbar from './components/Searchbar.vue';
 import axios from 'axios';
+const host = "http://localhost";
+const port = "5050"
 
   
 
@@ -138,7 +146,9 @@ export default {
       searchQuery: '',
       searchResults: [],
       sortBy : "followers",
-      filter : []
+      filter : [],
+      errors :[]
+ 
     }
   },
 
@@ -155,9 +165,10 @@ export default {
  
 
 
-      axios.get('http://localhost:5050/search?q='+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy+"&filter="+this.filter)
+      axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy+"&filter="+this.filter)
         .then((response) => {
-          console.log(response)
+           this.errors =[];
+          console.log(response )
           if (response.data === null) {
             this.searchResults = [];
           } else {
@@ -165,7 +176,12 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error);
+          //window.alert("Backend not reachable on " + host + ":" + port, "Timeout");
+          this.errors = error;
+          if(error.message =="Network Error"){
+            this.errors.name ="while Waiting for Response from BackendServer on "
+            +host + ":" + port
+          }
           this.searchResults = []
         })
     }
