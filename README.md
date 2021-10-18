@@ -48,7 +48,7 @@ Date kann leer sein
 :white_check_mark: Follower Range Search  
 :white_check_mark: Join Datum Range Search     
 :white_check_mark: Country Search  
-:white_large_square: Other Country Search (Not must (gooooooglen))   
+:white_check_mark: Other Country Search (Not must (gooooooglen))   
 :white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden  
 
 Wichtige link:

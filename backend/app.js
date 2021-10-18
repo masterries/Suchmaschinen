@@ -109,6 +109,7 @@ app.get('/search', function (req, res){
     switch (queryType){
         case "all":
             typ = esb.boolQuery().must([esb.matchAllQuery()]);
+            
 
         break;
 
@@ -139,9 +140,25 @@ app.get('/search', function (req, res){
     if(filter["country"]!=0){
         var countryArr = filter["country"];
         if(countryArr.includes("Other")){
+            var notCountry = [
+                "United States",
+                "Great-Britain",
+                "India",
+                "Russian Federation",
+                "Canada",
+                "Australia",
+                "Germany"
+              ]
             countryArr = removeItemOnce(countryArr,"Other");
+            countryArr.forEach(element =>notCountry = removeItemOnce(notCountry, element));
+            console.log(countryArr)
+            typ.mustNot(esb.termsQuery("country",notCountry));
+        }else{
+            typ.filter(esb.termsQuery("country",countryArr))
         }
-        typ.filter(esb.termsQuery("country",countryArr))
+        
+
+        
         
 
         
