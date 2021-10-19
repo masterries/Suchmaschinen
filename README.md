@@ -31,6 +31,8 @@
 :white_large_square: Fixen von Empty Pictures   
 :white_check_mark: Ausblenden wenn Land nicht vorhanden ist   
 :exclamation::exclamation::exclamation: Bitte Fixen dass die Cards vertial geordnert angezeigt werden, werden gerade horizintal angezeigt, sehr irreführend
+
+Suche muss man über query die currentPage holen die diese immer von vorher ist 
 ![alt text](https://i.imgur.com/ZZSaAtB.png) 
 
 

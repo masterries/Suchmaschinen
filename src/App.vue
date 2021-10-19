@@ -257,7 +257,7 @@
       console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
       //placeholder Variable
       console.log(this.active)
-      document.activeElement.tagName;
+      
       
 
 
