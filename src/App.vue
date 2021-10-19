@@ -246,15 +246,12 @@
       }
     },
 
-
     methods: {
       onSubmit() {
         // TODO: NPM server
 
       console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
       //placeholder Variable
-
-
 
 
         axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
@@ -268,7 +265,12 @@
             if (response.data === null) {
               this.searchResults = [];
             } else {
-              this.searchResults = response.data;
+              //this is intended to re-order the result array so results are ordered horizontically instead of vertically but...
+              var i = 0; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
+              i = 1; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
+              i = 2; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
+              console.log("searchresults : " + this.searchResults)
+              //this.searchResults = response.data;
             }
           })
           .catch((error) => {
