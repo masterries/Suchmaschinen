@@ -13,8 +13,8 @@
      <b-card-text maxlength= 100>
     Follower : {{content._source.followers}} <br>
     Join Date : {{content._source.join_date}} <br>
-    Videos : {{content._source.videos}} 
-    Country : {{content._source.country}} 
+    Videos : {{content._source.videos}} <br>
+    <p v-if="content._source.country !== undefined " > Country : {{content._source.country}} </p>
     </b-card-text>
 
     <b-button :href="`${content._source.profile_url}`" variant="primary">Go to {{content._source.title}} on Youtube</b-button>
@@ -25,6 +25,7 @@
 
 <script>
 export default {
+
   name: 'ResultCard',
 
   props: {

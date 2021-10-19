@@ -36,9 +36,18 @@ app.get('/search', function (req, res){
     let followerRaw = req.query["follower"]
     let filtersRaw = req.query['filter']
     let countryRaw = req.query['country']
+    let size = req.query['treffer'];
+    let page = req.query['page'];
     if(by1 == "normal"){
         by1 = "_score"
     }
+
+    //todo  
+    let basicInfo = {};
+    basicInfo["res"] = res;
+    basicInfo["typMatch"] = "";
+    basicInfo["searchby"] = "title";
+    basicInfo["Index"] = "youtubechannel";
     
 
     let filter = {};
@@ -47,11 +56,18 @@ app.get('/search', function (req, res){
     filter["video"] = videoRangeRaw.split("-");
     filter["follower"] = followerRaw.split("-");
     filter["country"] = countryRaw.split(",");
+    filter["size"] = size;
+    filter["page"] = page;
+
+
+    console.log(page);
+    
     //console.log(countryRange);
     //console.log(filter["category"])
 
     
     if(name == ""){
+
         send(res,"all","title",name,filter,order,by1,req);
     }else{
         send(res,"match","title",name,filter,order,by1,req);
@@ -85,15 +101,23 @@ app.get('/search', function (req, res){
   function send(res,queryType,title0,name,filter,order,by1){
 
     requestBody = filterExc(queryType,title0,name,filter);
-    sort(requestBody,order,by1);
+    requestBody = sort(requestBody,order,by1);
+
+    esb.prettyPrint(requestBody);
     
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
-            if(results.hits.total.value ==0&& queryType!="fuzzy"){
-                send(res,"fuzzy",title0,name,filter,order,by1);
+            if(queryType== "fuzzy"){
+              res.send(results.hits.hits);
+            }else if(results.hits.total.value ==0){
+               send(res,"fuzzy",title0,name,filter,order,by1);
+
             }else{
+              /*if(queryType!="fuzzy"){
+
+              
                 let body1 = esb.requestBodySearch();
                 body1.query(esb.multiMatchQuery([ "title","title._2gram","title._3gram"],name)).size(1);
-                esb.prettyPrint(body1);
+                //esb.prettyPrint(body1);
 
                 client.search({
                     index: "youtubechannel_auto",
@@ -112,8 +136,10 @@ app.get('/search', function (req, res){
                 if(sugg != 0){
                     results.hits.hits[0]._source["Suggestion"] = sugg;
                     console.log(results.hits.hits[0]._source);
-                }
-                //console.log(results)
+                }}*/
+
+                console.log(results)
+                console.log("gesendet")
                 res.send(results.hits.hits);
             }
 
@@ -180,16 +206,21 @@ app.get('/search', function (req, res){
             typ.mustNot(esb.termsQuery("country",notCountry));
         }else{
             typ.filter(esb.termsQuery("country",countryArr))
-        }
-        
-
-        
-        
-
-        
+        }        
     }
+
+    if(filter["size"] !=10 ){
+      console.log("sizeing")
+      body.size(filter["size"]);
+    }
+    if(filter["page"] != 1){
+      if(filter["page"] >0 ){
+        body.from((filter["page"]-1)*filter["size"] );
+      }
+    }
+
      a= body.query(typ)
-    esb.prettyPrint(a);
+
     
      return body.query(typ);
      

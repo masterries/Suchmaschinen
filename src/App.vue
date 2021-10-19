@@ -11,8 +11,10 @@
               <p class="text-center">Request : {{errors.config.url}}</p>
 
     </div>
-              <div class="alert alert-secondary" role="alert" v-if="sugg" width="150">
-              <p class="text-center">Suggestion ? (BETA) {{sugg}}</p>
+              <div class="alert alert-secondary" role="alert" v-if="sugg" Style="float: right;width: 12%;margin-top: -90px;">
+              <p class="text-center">Suggestion:(W.I.P)</p>
+              <p class="text-center"><strong>{{sugg}}</strong></p>
+
 
     </div>
 
@@ -134,6 +136,14 @@
         <b-form-input v-model="followersUpper" placeholder="max."></b-form-input>
       </div>
 
+       <div>
+        <label for="range-pages">Anzahl Treffer  und Seite</label>
+        <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
+        <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
+        <b-form-input v-model="treffer" placeholder="Treffer Anzahl"></b-form-input>
+        <b-form-input v-model="page" placeholder="Page Number"></b-form-input>
+      </div>
+
       
     </b-container>
     <!-- ADD: number of results & pages & Date Time Range as parameters -->
@@ -244,7 +254,9 @@ export default {
       followersLower : '1',
       videoLower : '1',
       videoUpper : '100000',
-      sugg: ""
+      sugg: "",
+      page:"1",
+      treffer : 10
     }
   },
 
@@ -261,7 +273,7 @@ export default {
 
       axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
                 +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+this.date1+";"+this.date2+
-                "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry)
+                "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry+"&treffer="+this.treffer +"&page=" +this.page)
         .then((response) => {
            this.errors =[];
            this.sugg = response.data[0]._source.Suggestion;

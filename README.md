@@ -24,10 +24,14 @@
 :white_large_square: Einfügen von Filter nach Follower Range - verbesserungs bedürftig / sendet noch nicht  
 :white_large_square: Einfügen von Filter nach Land - verbesserungs bedürftig / sendet noch nicht  
 :white_large_square: Zurücksetzten aller Filter Button - sendet noch nicht  
-:white_large_square: Allgemeines Desing anpassen    
-:white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird   
+:white_large_square: Einfügen von Dropdown im Anzahl treffer zu definieren - Inputfeld ist da aber dropdown wäre cooler   
+:white_large_square: Allgemeines Desing anpassen      
+:white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird    
 :white_large_square: Fixen von Empty Pictures   
-:white_large_square: Message wenn Land = null     
+:white_check_mark: Ausblenden wenn Land nicht vorhanden ist   
+:exclamation::exclamation::exclamation: Bitte Fixen dass die Cards vertial geordnert angezeigt werden, werden gerade horizintal angezeigt, sehr irreführend
+![alt text](https://i.imgur.com/ZZSaAtB.png) 
+
 
 
 
@@ -46,7 +50,9 @@
 :white_check_mark: Follower Range Search  
 :white_check_mark: Join Datum Range Search     
 :white_check_mark: Country Search  
-:white_check_mark: Other Country Search (Not must (gooooooglen))   
+:white_check_mark: Size Based Search   
+:white_check_mark: From to Search  
+:white_check_mark: Other Country Search (Not must (gooooooglen))     
 :white_large_square: Generierung von Vorschlägen Begriff um Frontend zu senden   (BETA)
 scheint irgendwie wired Verhalten 
 
@@ -55,7 +61,13 @@ https://elastic-builder.js.org/
 https://blog.logrocket.com/elasticsearch-query-body-builder-node-js/
 
 # Bugs
-Backend Server hängt sich auf ? Zu viele Anfragen? idk
+Backend Server hängt sich auf ? Zu viele Anfragen? wenn Man Schnell tippen tut oder so, ist irgendwo Bottlenack (sollte besser sein)
+Bug mit fuzzySearch und from und page, wirkt Komisch aber ist richtig,
+Weil bei Hello&Music kommen 2 Ergebisse wenn amn ein 3tes Ergebniss erzwingen will kommt ne Fuzzy(Hello&Music)
+Wirkt komisch, kann man ggf am ende Fizzen mit Maximal page anzahl. 
+problem hier ist halt, dass man den Query ja erst ausführen muss um zu wissen wie viele Pages es
+um dann die page anzahl zu limitieren, also wenn man es im Backend limitieren will, man kann natürlich auch frontend, versuchen zu limitieren, aber das sollte auch nicht funktionieren, weil frontent ja auch nur die Results bekommt.
+Ich kann zurzeit im Code nicht über den Filter eine Suche machen, bzw so war das nicht gedacht, aber das wäre ne Idee
 
 
 
