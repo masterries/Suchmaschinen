@@ -250,6 +250,8 @@
       }
     },
 
+
+
     methods: {
       onSubmit() {
         // TODO: NPM server
@@ -257,13 +259,14 @@
       console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
       //placeholder Variable
       console.log(this.active)
-      
+      var page = window.location.href.split("#")[1]
+
       
 
 
         axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
                   +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+this.date1+";"+this.date2+
-                  "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry+"&treffer="+this.treffer +"&page=" +(this.page+1))
+                  "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry+"&treffer="+this.treffer +"&page=" +page)
           .then((response) => {
              this.errors =[];
              this.sugg = response.data[0]._source.Suggestion;
