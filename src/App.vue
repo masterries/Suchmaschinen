@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <searchbar v-model="searchQuery" @input="onSubmit" v-on:click="onSubmit"/>
+    <div class="searchbar">
+      <searchbar v-model="searchQuery" @input="onSubmit" v-on:click="onSubmit"/>
       <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="errors.length !=0" width="150">
         <h4 class="alert-heading text-center"><b-icon-exclamation-triangle-fill></b-icon-exclamation-triangle-fill> 
              Oops! Something went wrong.</h4>
@@ -11,11 +12,12 @@
         <p class="text-center">Suggestion:(W.I.P)</p>
         <p class="text-center"><strong>{{sugg}}</strong></p>
       </div>
+    </div>
 
     <b-container name="body" class="bv-example-row">
       <b-row>
         <b-col cols="3">
-          <div name="menu">
+          <div name="menu" class="menu">
             <b-container>
               <div name="order-div">
                 <b-form-group label="Order" v-slot="{ ariaDescribedby }">
@@ -109,28 +111,27 @@
                 <label for="range-videos">Range Videos</label>
                 <!--<b-form-input id="range-videos" v-model="valueRangeVideos" @change="onSubmit()" type="range" min="0" max="1000000"></b-form-input>
                 <div class="mt-2">Value: {{ valueRangeVideos }}</div>-->
-                <b-form-input v-model="videoLower" placeholder="min."/>
-                <b-form-input v-model="videoUpper" placeholder="max."/>
+                <b-form-input v-model="videoLower" @change="onSubmit()" placeholder="min."/>
+                <b-form-input v-model="videoUpper" @change="onSubmit()" placeholder="max."/>
               </div>
 
               <div>
                 <label for="range-followers">Range Followers</label>
                 <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
                 <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
-                <b-form-input v-model="followersLower" placeholder="min."/>
-                <b-form-input v-model="followersUpper" placeholder="max."/>
+                <b-form-input v-model="followersLower" @change="onSubmit()" placeholder="min."/>
+                <b-form-input v-model="followersUpper" @change="onSubmit()" placeholder="max."/>
               </div>
 
               <div>
                 <label for="range-pages">Anzahl Treffer  und Seite</label>
                 <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
                 <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
-                <b-form-input v-model="treffer" placeholder="Treffer Anzahl"/>
-                <b-form-input v-model="page" placeholder="Page Number"/>
+                <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
+                <b-form-input v-model="page" @change="onSubmit()" placeholder="Page Number"/>
               </div>
 
             </b-container>
-            <!-- ADD: number of results & pages & Date Time Range as parameters -->
           </div>
         </b-col>
         <b-col cols="9">
@@ -157,20 +158,19 @@
         </b-col>
       </b-row>
 
-      <div name="pageselect">
+      <div class="pageselect">
         <b-pagination-nav
+         @change="onSubmit()"
           :number-of-pages="pmax"
           base-url="#"
           class="mt-4"
+          align="center"
         >
           <template #first-text><span class="text-success">First</span></template>
           <template #prev-text><span class="text-danger">Prev</span></template>
           <template #next-text><span class="text-warning">Next</span></template>
           <template #last-text><span class="text-info">Last</span></template>
           <template #ellipsis-text>
-            <b-spinner small type="grow"></b-spinner>
-            <b-spinner small type="grow"></b-spinner>
-            <b-spinner small type="grow"></b-spinner>
           </template>
           <template #page="{ page, active }">
             <b v-if="active">{{ page }}</b>
@@ -242,8 +242,8 @@
         videoUpper : '100000',
         sugg: "",
         page:"1",
-        treffer : 10,
-        pmax : 10
+        treffer : "12",
+        pmax : "10"
       }
     },
 
@@ -266,12 +266,6 @@
             if (response.data === null) {
               this.searchResults = [];
             } else {
-              //this is intended to re-order the result array so results are ordered horizontically instead of vertically but...
-              //var i = 0; 
-              //while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
-              //i = 1; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
-              //i = 2; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
-              console.log("searchresults : " + this.searchResults)
               this.searchResults = response.data;
             }
           })
