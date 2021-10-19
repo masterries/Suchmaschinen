@@ -130,7 +130,6 @@
                 <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
                 <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
                 <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
-                <b-form-input v-model="page" @change="onSubmit()" placeholder="Page Number"/>
               </div>
 
             </b-container>
@@ -161,7 +160,7 @@
       </b-row>
 
       <div class="pageselect">
-        <b-pagination-nav
+        <b-pagination-nav 
          @change="onSubmit()"
           :number-of-pages="pmax"
           base-url="#"
@@ -174,8 +173,8 @@
           <template #last-text><span class="text-info">Last</span></template>
           <template #ellipsis-text>
           </template>
-          <template #page="{ page, active }">
-            <b v-if="active">{{ page }}</b>
+          <template #page="{active ,page }">
+            <b v-if="active">{{ page  }}</b>
             <i v-else>{{ page }}</i>
           </template>
         </b-pagination-nav>
@@ -244,8 +243,9 @@
         videoLower : '1',
         videoUpper : '100000',
         sugg: "",
-        page:"1",
+        page:"0",
         treffer : "12",
+        active:"",
         pmax : "10"
       }
     },
@@ -256,11 +256,14 @@
 
       console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
       //placeholder Variable
+      console.log(this.active)
+      document.activeElement.tagName;
+      
 
 
         axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
                   +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+this.date1+";"+this.date2+
-                  "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry+"&treffer="+this.treffer +"&page=" +this.page)
+                  "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry+"&treffer="+this.treffer +"&page=" +(this.page+1))
           .then((response) => {
              this.errors =[];
              this.sugg = response.data[0]._source.Suggestion;
