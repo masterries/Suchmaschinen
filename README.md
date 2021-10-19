@@ -1,8 +1,9 @@
 # todo Allgemein
 :white_check_mark: Funktionalität, Suchen mit Fehlerakzeptanz (aktuell von Hamming Abstand von 2)   
 :white_check_mark: Sortieren der Ergebnisse Nach #Video, #Follower, und Relevanz( Score)    
+:white_check_mark: Filter von Ergebnissen (siehe Todo Front+Backend)   
 :white_large_square: Alles auf AWS zum laufen bekommen :clock9:  
-:white_large_square: Filter von Ergebnissen (siehe Todo Front+Backend)
+
 
 
 ## Bonus
