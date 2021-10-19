@@ -86,7 +86,7 @@ height:100%;
 }
 
 .pageselect{
-    margin-bottom: 70px;
+    padding-bottom: 70px;
 }
 
 .card{
@@ -99,12 +99,21 @@ height:100%;
   }
 
 .searchbar{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-.menu{
+.menu, #searchbar{
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     padding-top: 10px;
     padding-bottom: 15px;
+    background-color: whitesmoke;
+}
+
+.app{
+    background:
+    linear-gradient(135deg, #858f97 21px, #a8a8a8 22px, #a8a8a8 24px, transparent 24px, transparent 67px, #a8a8a8 67px, #a8a8a8 69px, transparent 69px),
+    linear-gradient(225deg, #858f97 21px, #a8a8a8 22px, #a8a8a8 24px, transparent 24px, transparent 67px, #a8a8a8 67px, #a8a8a8 69px, transparent 69px)0 64px;
+    background-color:#858f97;
+    background-size: 64px 128px;
 }

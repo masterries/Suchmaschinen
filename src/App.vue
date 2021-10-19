@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div class="app" id="app">
     <div class="searchbar">
-      <searchbar v-model="searchQuery" @input="onSubmit" v-on:click="onSubmit"/>
+      <searchbar id="searchbar" v-model="searchQuery" @input="onSubmit" v-on:click="onSubmit"/>
       <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="errors.length !=0" width="150">
         <h4 class="alert-heading text-center"><b-icon-exclamation-triangle-fill></b-icon-exclamation-triangle-fill> 
              Oops! Something went wrong.</h4>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <b-container name="body" class="bv-example-row">
+    <b-container name="body" class="bv-row">
       <b-row>
         <b-col cols="3">
           <div name="menu" class="menu">
