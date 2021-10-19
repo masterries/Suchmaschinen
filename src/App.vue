@@ -136,7 +136,8 @@
         <b-col cols="9">
           <div name="result" float: right>
             <b-container>
-              <b-card-group columns>
+              <div class ="row row-cols-1 row-cols-md-3">
+              
                 <template v-if="searchResults.length > 0">
                   <result-card
                     v-for="(item, index) in searchResults"
@@ -149,8 +150,8 @@
                 <template v-else>
                   <div class="text-secondary text-center">Keine Ergebnisse!</div>
                 </template>
-
-              </b-card-group>
+                </div>
+              
             </b-container>
           </div>
         </b-col>
@@ -266,11 +267,12 @@
               this.searchResults = [];
             } else {
               //this is intended to re-order the result array so results are ordered horizontically instead of vertically but...
-              var i = 0; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
-              i = 1; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
-              i = 2; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
+              //var i = 0; 
+              //while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
+              //i = 1; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
+              //i = 2; while(i<this.treffer) { this.searchResults.push(response.data[i]); i = i + 3; }
               console.log("searchresults : " + this.searchResults)
-              //this.searchResults = response.data;
+              this.searchResults = response.data;
             }
           })
           .catch((error) => {

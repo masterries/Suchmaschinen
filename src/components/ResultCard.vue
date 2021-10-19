@@ -1,26 +1,26 @@
 <template>
-  <b-card :img-src="`${content._source.picture_url}`" 
-  :title="`${content._source.title} ${content._source.country}`"
- 
-  img-alt="Image"
-  img-left
-  class="mb-3"
-            img-height="150"
-          img-width="150"
-  :sub-title="`${content._source.category_name}`"
-   tag="article">
-
-     <b-card-text maxlength= 100>
+<div class ="col mb-4">
+  <div class ="card">
+    <img :src="`${content._source.picture_url}`" class="card-img-top">
+    <div class ="card-body"> 
+      <h5 class="card-title">{{content._source.title}} </h5>
+      <div class="card-text"> 
+   
     Follower : {{content._source.followers}} <br>
     Join Date : {{content._source.join_date}} <br>
     Videos : {{content._source.videos}} <br>
-    <p v-if="content._source.country !== undefined " > Country : {{content._source.country}} </p>
-    </b-card-text>
+   <!--  !-->
 
-    <b-button :href="`${content._source.profile_url}`" variant="primary">Go to {{content._source.title}} on Youtube</b-button>
+      
+      <p v-if="content._source.country !== undefined " > Country : {{content._source.country}} </p>
+      <p v-else> <br></p>
+</div>
 
-  </b-card>
+    </div>
 
+
+
+  </div></div>
 </template>
 
 <script>

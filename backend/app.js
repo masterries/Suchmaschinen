@@ -61,56 +61,44 @@ app.get('/search', function (req, res){
 
 
     console.log(page);
-    
-    //console.log(countryRange);
-    //console.log(filter["category"])
 
     
     if(name == ""){
-
+      //Empty Search 
         send(res,"all","title",name,filter,order,by1,req);
     }else{
+      // Search with keayword
         send(res,"match","title",name,filter,order,by1,req);
-    }
-
-
-    
-   // if(filtersRaw != "" && name != ""){
-     //   send(res,searchWithFilter(res,"title",name,order,by1,filterArray));
-    //}else if(name == ""){
-      //  searchWithOutNameFilter(res,order,by1,filterArray);
-    //}else{
-      //  searchSortNormal(res,"title",name,order,by1);
-    //}
-
-
-
-        
-      // let requestBody =  searchBasic("title",name)
-      // requestBody = searchSort(requestBody,order,by1);
-      // sendBody(res,requestBody,true);
-      
-
-
-   
+    }  
     
   })
 
+
+  //WIP: Temp Suggestion variable 
   sugg ="";
 
-  function send(res,queryType,title0,name,filter,order,by1){
 
+
+  function send(res,queryType,title0,name,filter,order,by1){
+    
+    //Building request Body with filter and sorting
+    //Printing for logging in Console
     requestBody = filterExc(queryType,title0,name,filter);
     requestBody = sort(requestBody,order,by1);
-
     esb.prettyPrint(requestBody);
     
+    //elasticSearch Send Request to Server and giving response
     client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
+
+            //if Fuzzy Search always send result back
             if(queryType== "fuzzy"){
               res.send(results.hits.hits);
+
             }else if(results.hits.total.value ==0){
+            //if Normal Match Search is empty then doing a Fuzzy search
                send(res,"fuzzy",title0,name,filter,order,by1);
 
+              //if normal match search giving result, then send this back to the Server
             }else{
               /*if(queryType!="fuzzy"){
 
@@ -152,7 +140,8 @@ app.get('/search', function (req, res){
       
   }
 
-
+  //simple Filter method
+  //in filter is a Array of different kind of filter (<Array>|Term)
   function filterExc(queryType,title,name,filter){
 
     const body = esb.requestBodySearch()
@@ -189,6 +178,8 @@ app.get('/search', function (req, res){
         typ.filter(esb.termsQuery("category_id",filter["category"]))
     }
     if(filter["country"]!=0){
+
+      //if other Trying to invest the List
         var countryArr = filter["country"];
         if(countryArr.includes("Other")){
             var notCountry = [
@@ -240,94 +231,6 @@ app.get('/search', function (req, res){
 
   function sort(requestBody,order,by1){
       return requestBody.sort(new esb.sort(by1, order));
-  }
-
-  function searchAll(){
-    return esb.requestBodySearch().query(esb.matchAllQuery());
-  }
-
-  
-
-  function searchWithFilter(res,category,name,order,by1,filterArray){
-      console.log(filterArray)
-      videoRange=[];
-    const requestBody = esb.requestBodySearch()
-    .query(
-      esb.boolQuery()
-        .must([
-          esb.matchQuery(
-            category, name,
-          ),
-        ])
-      .filter(esb.termsQuery("category_id", filterArray))
- //     .filter(esb.rangeQuery('videos').gte(videoRange[0]).lte(videoRange[1]))
-    )
-    requestBody.sort(new esb.sort(by1, order));
-
-
- 
-       
-      
-    
-
-    client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
-       
-            //console.log(results)
-            res.send(results.hits.hits);
-
-        
-    })
-    .catch(err=>{
-        console.log(err)
-    });
-  }
-
-
-
-
-
-
-
-  function searchSortNormal(res,category,name,order,by1){
-    const requestBody = new esb.RequestBodySearch()
-      
-        requestBody.query(new esb.MatchQuery(category, name)).sort(new esb.sort(by1, order));
-          
-      
-    
-
-    client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
-        if(results.hits.total.value==0 ){
-            searchSortFuzzy(res,category,name,order,by1);
-        }else{
-            console.log(results)
-            res.send(results.hits.hits);
-
-        }
-    })
-    .catch(err=>{
-        console.log(err)
-    });
-  }
-
-
-  function searchSortFuzzy(res,category,name,order,by1){
-    const requestBody = new esb.RequestBodySearch()
-    requestBody.query(new esb.FuzzyQuery(category, name)).sort(new esb.sort(by1, order));
-        
-    
-
-
-    client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
-
-            console.log(results)
-            res.send(results.hits.hits);
-
-        
-    })
-    .catch(err=>{
-        console.log(err)
-    });
   }
 
 
@@ -509,6 +412,49 @@ function renameKey ( obj, oldKey, newKey ) {
     body.query(a)
      return body;
 
+
+     
+  function searchSortNormal(res,category,name,order,by1){
+    const requestBody = new esb.RequestBodySearch()
+      
+        requestBody.query(new esb.MatchQuery(category, name)).sort(new esb.sort(by1, order));
+          
+      
+    
+
+    client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
+        if(results.hits.total.value==0 ){
+            searchSortFuzzy(res,category,name,order,by1);
+        }else{
+            console.log(results)
+            res.send(results.hits.hits);
+
+        }
+    })
+    .catch(err=>{
+        console.log(err)
+    });
+  }
+
+
+  function searchSortFuzzy(res,category,name,order,by1){
+    const requestBody = new esb.RequestBodySearch()
+    requestBody.query(new esb.FuzzyQuery(category, name)).sort(new esb.sort(by1, order));
+        
+    
+
+
+    client.search({index: "youtubechannel", body: requestBody.toJSON()}).then(results => {
+
+            console.log(results)
+            res.send(results.hits.hits);
+
+        
+    })
+    .catch(err=>{
+        console.log(err)
+    });
+  }
 
 
     
