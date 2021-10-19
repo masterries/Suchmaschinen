@@ -1,5 +1,7 @@
 <template>
+
   <div class="app" id="app">
+    <meta name="referrer" content="no-referrer"/>
     <div class="searchbar">
       <searchbar id="searchbar" v-model="searchQuery" @input="onSubmit" v-on:click="onSubmit"/>
       <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="errors.length !=0" width="150">
@@ -192,6 +194,7 @@
       </div>
     </b-container>
   </div>
+  
 </template>
 
 
