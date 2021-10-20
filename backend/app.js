@@ -119,6 +119,8 @@ app.get('/search', function (req, res){
 
                 })
 
+
+
                
                 console.log(sugg)
                 if(sugg != 0){
