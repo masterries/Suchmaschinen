@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <b-container name="body" class="bv-row">
+    <b-container name="body" class="bv-row body">
       <b-row>
         <b-col cols="3">
           <div name="menu" class="menu">
@@ -126,7 +126,7 @@
               </div>
 
               <div>
-                <label for="range-pages">Anzahl Treffer  und Seite</label>
+                <label for="range-pages">Hits per page</label>
                 <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
                 <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
                 <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
