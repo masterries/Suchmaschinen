@@ -1,4 +1,5 @@
-<p ><h1 > <img src="frontend/src/image/android-chrome-192x192.png" alt="drawing" width="30" />  Youtube Channel Search </h2></p>
+<p ><h1 > <img src="frontend/src/image/android-chrome-192x192.png" alt="drawing" width="30" />  Youtube Channel Search </h2></p>   
+
 [![Build and Run Backend](https://github.com/masterries/Suchmaschinen/actions/workflows/node.js.yml/badge.svg)](https://github.com/masterries/Suchmaschinen/actions/workflows/node.js.yml)     
 [![Build and  Upload Frontend](https://github.com/masterries/Suchmaschinen/actions/workflows/nodeUpload.js.yml/badge.svg)](https://github.com/masterries/Suchmaschinen/actions/workflows/nodeUpload.js.yml) 
 
