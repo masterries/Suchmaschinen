@@ -119,7 +119,7 @@
                 <div class="mt-2">Value: {{ valueRangeVideos }}</div>-->
                 <b-input-group>
                   <template #prepend>
-                    <b-input-group-text > min</b-input-group-text>
+                    <b-input-group-text id="min" style="padding-right: 14px">min.</b-input-group-text>
                   </template>
                   <b-form-input v-model="videoLower" @change="onSubmit()" placeholder="min."/>
                 </b-input-group>
@@ -138,7 +138,7 @@
                 <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
                 <b-input-group>
                   <template #prepend>
-                    <b-input-group-text > min</b-input-group-text>
+                    <b-input-group-text id="min" style="padding-right: 14px"> min.</b-input-group-text>
                   </template>
                   <b-form-input v-model="followersLower" @change="onSubmit()" placeholder="min."/>
                 </b-input-group>
@@ -153,8 +153,6 @@
 
               <div>
                 <label for="range-pages">Hits per page</label>
-                <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
-                <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
                 <b-input-group>
                   <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
                   <template #append>
