@@ -238,7 +238,7 @@
   import resultCard from './components/ResultCard.vue';
   import searchbar from './components/Searchbar.vue';
   import axios from 'axios';
-  const host = "http://35.173.1.129";
+  const host = "http://ec2-54-196-94-19.compute-1.amazonaws.com";
   const port = "5050"
 
   export default {
