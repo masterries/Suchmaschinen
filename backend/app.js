@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const esb = require('elastic-builder'); //the builder
 const { query } = require('express');
 
-app.set('port', process.env.PORT || 5050 );
+app.set('port', process.env.PORT || 80 );
 app.use(cors());
 app.use(bodyParser.json());
 
