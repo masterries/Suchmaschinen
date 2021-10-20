@@ -165,7 +165,7 @@
                       <b-dropdown-item @click="hitsDropdown(30)">30</b-dropdown-item>
                       <b-dropdown-item @click="hitsDropdown(45)">45</b-dropdown-item>
                       <b-dropdown-item @click="hitsDropdown(60)">60</b-dropdown-item>
-                      <b-dropdown-item @click="hitsDropdown(90)">90</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(900)">90</b-dropdown-item>
                     </b-dropdown>
                   </template>
                     <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
