@@ -159,15 +159,15 @@
                   <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
                   <template #append>
                     <b-dropdown>
-                      <b-dropdown-item>9</b-dropdown-item>
-                      <b-dropdown-item>12</b-dropdown-item>
-                      <b-dropdown-item>15</b-dropdown-item>
-                      <b-dropdown-item>18</b-dropdown-item>
-                      <b-dropdown-item>24</b-dropdown-item>
-                      <b-dropdown-item>30</b-dropdown-item>
-                      <b-dropdown-item>45</b-dropdown-item>
-                      <b-dropdown-item>60</b-dropdown-item>
-                      <b-dropdown-item>90</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(9)">9</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(12)">12</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(15)">15</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(18)">18</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(24)">24</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(30)">30</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(45)">45</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(60)">60</b-dropdown-item>
+                      <b-dropdown-item @click="hitsDropdown(90)">90</b-dropdown-item>
                     </b-dropdown>
                   </template>
                 </b-input-group>
@@ -333,6 +333,11 @@
 
       resetCountryFilters(){
         this.filterCountry = [];
+        this.onSubmit();
+      },
+
+      hitsDropdown(value){
+        this.treffer = value;
         this.onSubmit();
       },
 

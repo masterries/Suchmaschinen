@@ -23,9 +23,9 @@
 :white_large_square: Einfügen von Filter nach Join Datum Range - verbesserungs bedürftig / sendet noch nicht  
 :white_large_square: Einfügen von Filter nach Video Range - verbesserungs bedürftig / sendet noch nicht  
 :white_large_square: Einfügen von Filter nach Follower Range - verbesserungs bedürftig / sendet noch nicht  
-:white_check_mark: Einfügen von Filter nach Land - verbesserungs bedürftig / sendet noch nicht  
-:white_check_mark: Zurücksetzten aller Filter Button - sendet noch nicht  
-:white_large_square: Einfügen von Dropdown im Anzahl treffer zu definieren - Inputfeld ist da aber dropdown wäre cooler   
+:white_check_mark: Einfügen von Filter nach Land
+:white_check_mark: Zurücksetzten aller Filter Button  
+:white_check_mark: Einfügen von Dropdown im Anzahl treffer zu definieren
 :white_large_square: Allgemeines Desing anpassen      
 :white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird    
 :white_check_mark: Fixen von Empty Pictures   
