@@ -230,6 +230,7 @@ app.get('/search', function (req, res){
 
 
   function sort(requestBody,order,by1){
+    console.log(by1);
       return requestBody.sort(new esb.sort(by1, order));
   }
 

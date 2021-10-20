@@ -101,9 +101,8 @@ und kann anschließend in einen S3-Bucket hochgeladen werden.
 
 ## Running des Backend Codes
 - Navigieren in `cd backend` ausfüren von npm Installation Abhänigkeiten
-- Installation von Elastic Search Body Parser `npm install express body-parser elasticsearch cors --save`
-- Installation von Elastic Search `npm install elastic-builder --savee`
-- Ausführen mit `npm app.js`
+- Installation von Elastic Search Body Parser `npm install `
+- Ausführen mit `npm run server`
 
 
 ## Projektaufbau

@@ -238,7 +238,7 @@
   import resultCard from './components/ResultCard.vue';
   import searchbar from './components/Searchbar.vue';
   import axios from 'axios';
-  const host = "http://localhost";
+  const host = "http://35.173.1.129";
   const port = "5050"
 
   export default {
