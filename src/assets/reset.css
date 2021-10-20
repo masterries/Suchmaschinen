@@ -114,7 +114,7 @@ height:100%;
     /*margin-top: 10px;*/
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 5;
 }
 
 .menu, #searchbar{
@@ -136,4 +136,15 @@ height:100%;
 
 .body{
     padding-top: 100px;
+}
+
+.btn-group{
+    z-index: 0;
+}
+
+.btn-group-vertical{
+    z-index: 0;
+}
+.custom-control-label{
+    z-index: 0;
 }
