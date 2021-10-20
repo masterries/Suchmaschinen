@@ -315,7 +315,7 @@
             }
           })
           .catch((error) => {
-            //window.alert("Backend not reachable on " + host + ":" + port, "Timeout");
+            //window.alert("Backend not reachable on " + host + +  ":" + port, "Timeout");
             this.errors = error;
             if(error.message =="Network Error"){
               this.errors.name ="while Waiting for Response from BackendServer on "
