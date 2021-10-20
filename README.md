@@ -1,5 +1,6 @@
 # todo Allgemein
 [![Node.js CI](https://github.com/masterries/Suchmaschinen/actions/workflows/node.js.yml/badge.svg)](https://github.com/masterries/Suchmaschinen/actions/workflows/node.js.yml)   
+[![Upload Website + Build](https://github.com/masterries/Suchmaschinen/actions/workflows/nodeUpload.js.yml/badge.svg)](https://github.com/masterries/Suchmaschinen/actions/workflows/nodeUpload.js.yml)
 :white_check_mark: Funktionalität, Suchen mit Fehlerakzeptanz (aktuell von Hamming Abstand von 2)   
 :white_check_mark: Sortieren der Ergebnisse Nach #Video, #Follower, und Relevanz( Score)    
 :white_check_mark: Filter von Ergebnissen (siehe Todo Front+Backend)   
@@ -62,6 +63,7 @@ scheint irgendwie wired Verhalten
 Wichtige link:
 https://elastic-builder.js.org/
 https://blog.logrocket.com/elasticsearch-query-body-builder-node-js/
+https://www.youtube.com/watch?v=X3F3El_yvFg
 
 # Bugs
 Backend Server hängt sich auf ? Zu viele Anfragen? wenn Man Schnell tippen tut oder so, ist irgendwo Bottlenack (sollte besser sein)
