@@ -154,7 +154,7 @@
               <div>
                 <label for="range-pages">Hits per page</label>
                 <b-input-group>
-                  <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
+                
                   <template #append>
                     <b-dropdown>
                       <b-dropdown-item @click="hitsDropdown(9)">9</b-dropdown-item>
@@ -168,6 +168,7 @@
                       <b-dropdown-item @click="hitsDropdown(90)">90</b-dropdown-item>
                     </b-dropdown>
                   </template>
+                    <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
                 </b-input-group>
               </div>
 

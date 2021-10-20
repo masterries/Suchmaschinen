@@ -148,3 +148,8 @@ height:100%;
 .custom-control-label{
     z-index: 0;
 }
+
+.dropdown-menu.show{
+    left: -535% !important;
+    width: 540%;
+}
