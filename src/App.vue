@@ -28,7 +28,7 @@
                     @change="onSubmit()"
                     :aria-describedby="ariaDescribedby"
                     name="radios-stacked-order"
-                    stacked
+                    buttons
                   >
                     <b-radio value="asc">Ascending</b-radio>
                     <b-radio value="desc">Descending</b-radio>
@@ -44,10 +44,12 @@
                     :aria-describedby="ariaDescribedby"
                     name="radios-stacked-order-values"
                     stacked
+                    buttons
                   >
                     <b-radio value="normal">Relevance</b-radio>
                     <b-radio value="followers">Followers</b-radio>
                     <b-radio value="videos">Videos</b-radio>
+                    <b-radio value="date">Join Date</b-radio> <!-- dachte es wär nice ein 2x2 block aus den radiobutton buttons zu haben, aber weiß noch nich wie... fänds cooler als einfach 3 stacked optionen -->
                   </b-form-radio-group>
                 </b-form-group>
               </div>
@@ -115,23 +117,60 @@
                 <label for="range-videos">Range Videos</label>
                 <!--<b-form-input id="range-videos" v-model="valueRangeVideos" @change="onSubmit()" type="range" min="0" max="1000000"></b-form-input>
                 <div class="mt-2">Value: {{ valueRangeVideos }}</div>-->
-                <b-form-input v-model="videoLower" @change="onSubmit()" placeholder="min."/>
+                <b-input-group>
+                  <template #prepend>
+                    <b-input-group-text > min</b-input-group-text>
+                  </template>
+                  <b-form-input v-model="videoLower" @change="onSubmit()" placeholder="min."/>
+                </b-input-group>
+                
+                <b-input-group>
+                  <template #prepend>
+                    <b-input-group-text >max.</b-input-group-text>
+                  </template>
                 <b-form-input v-model="videoUpper" @change="onSubmit()" placeholder="max."/>
+                </b-input-group>
               </div>
 
               <div>
                 <label for="range-followers">Range Followers</label>
                 <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
                 <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
-                <b-form-input v-model="followersLower" @change="onSubmit()" placeholder="min."/>
-                <b-form-input v-model="followersUpper" @change="onSubmit()" placeholder="max."/>
+                <b-input-group>
+                  <template #prepend>
+                    <b-input-group-text > min</b-input-group-text>
+                  </template>
+                  <b-form-input v-model="followersLower" @change="onSubmit()" placeholder="min."/>
+                </b-input-group>
+                
+                <b-input-group>
+                  <template #prepend>
+                    <b-input-group-text >max.</b-input-group-text>
+                  </template>
+                  <b-form-input v-model="followersUpper" @change="onSubmit()" placeholder="max."/>
+                </b-input-group>
               </div>
 
               <div>
                 <label for="range-pages">Hits per page</label>
                 <!--<b-form-input id="range-followers" v-model="valueRangeFollowers" @change="onSubmit()" type="range" min="0" max="1000000000"></b-form-input>
                 <div class="mt-2">Value: {{ valueRangeFollowers }}</div>-->
-                <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
+                <b-input-group>
+                  <b-form-input v-model="treffer" @change="onSubmit()" placeholder="Treffer Anzahl"/>
+                  <template #append>
+                    <b-dropdown>
+                      <b-dropdown-item>9</b-dropdown-item>
+                      <b-dropdown-item>12</b-dropdown-item>
+                      <b-dropdown-item>15</b-dropdown-item>
+                      <b-dropdown-item>18</b-dropdown-item>
+                      <b-dropdown-item>24</b-dropdown-item>
+                      <b-dropdown-item>30</b-dropdown-item>
+                      <b-dropdown-item>45</b-dropdown-item>
+                      <b-dropdown-item>60</b-dropdown-item>
+                      <b-dropdown-item>90</b-dropdown-item>
+                    </b-dropdown>
+                  </template>
+                </b-input-group>
               </div>
 
             </b-container>
