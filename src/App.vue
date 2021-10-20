@@ -61,8 +61,9 @@
                     :aria-describedby="ariaDescribedby"
                     name="flavour-2"
                     stacked
+                    switches
                   >
-                    <b-form-checkbox value="10">Music</b-form-checkbox>
+                    <b-form-checkbox value="10">Musik</b-form-checkbox>
                     <b-form-checkbox value="24">Entertainment</b-form-checkbox>
                     <b-form-checkbox value="20">Gaming</b-form-checkbox>
                     <b-form-checkbox value="22">People & Blogs</b-form-checkbox>
@@ -77,7 +78,7 @@
                     <b-form-checkbox value="19">Travel & Events</b-form-checkbox>
                     <b-form-checkbox value="15">Pets & Animals</b-form-checkbox>
                   </b-form-checkbox-group>
-                  <b-button pill>Reset filters</b-button> <!-- no funtionality atm -->
+                  <b-button pill @click="resetCategoryFilters()">Reset category filters</b-button> <!-- no funtionality atm -->
                 </b-form-group>
               </div>
 
@@ -90,6 +91,7 @@
                     :aria-describedby="ariaDescribedby"
                     name="country"
                     stacked
+                    switches
                   > 
                     <b-form-checkbox value="United States">United States</b-form-checkbox>
                     <b-form-checkbox value="Great-Britain">Great-Britain</b-form-checkbox>
@@ -100,7 +102,7 @@
                     <b-form-checkbox value="Germany">Germany</b-form-checkbox>
                     <b-form-checkbox value="Other">Other</b-form-checkbox>
                   </b-form-checkbox-group>
-                  <b-button pill>Reset filters</b-button> <!-- no funtionality atm -->
+                  <b-button pill @click="resetCountryFilters()">Reset country filters</b-button> <!-- no funtionality atm -->
                 </b-form-group>
               </div>
 
@@ -283,6 +285,16 @@
             }
             this.searchResults = []
           })
+      },
+
+      resetCategoryFilters(){
+        this.filter = [];
+        this.onSubmit();
+      },
+
+      resetCountryFilters(){
+        this.filterCountry = [];
+        this.onSubmit();
       },
 
   //trying to display validation of the two dates but somethings off
