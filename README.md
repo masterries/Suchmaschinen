@@ -8,7 +8,7 @@
 
 ## Bonus
 :white_large_square: auf die Cards klicken, dann wird der Kanal Beschreibung angezeigt zu werden  
-:white_large_square: Basis 10 Elemente neue Seiten mit Formm 10 - 20 (size)   
+:white_check_mark: Basis 10 Elemente neue Seiten mit Formm 10 - 20 (size)   
 :white_check_mark: Live Suche :shipit:  
 :white_large_square: :heavy_dollar_sign: Live autokomplition  
 :white_large_square: :heavy_dollar_sign: `type ahead` Vorschläge mehre Anzeigen in Liste  
@@ -23,14 +23,13 @@
 :white_large_square: Einfügen von Filter nach Join Datum Range - verbesserungs bedürftig / sendet noch nicht  
 :white_large_square: Einfügen von Filter nach Video Range - verbesserungs bedürftig / sendet noch nicht  
 :white_large_square: Einfügen von Filter nach Follower Range - verbesserungs bedürftig / sendet noch nicht  
-:white_large_square: Einfügen von Filter nach Land - verbesserungs bedürftig / sendet noch nicht  
-:white_large_square: Zurücksetzten aller Filter Button - sendet noch nicht  
+:white_check_mark: Einfügen von Filter nach Land - verbesserungs bedürftig / sendet noch nicht  
+:white_check_mark: Zurücksetzten aller Filter Button - sendet noch nicht  
 :white_large_square: Einfügen von Dropdown im Anzahl treffer zu definieren - Inputfeld ist da aber dropdown wäre cooler   
 :white_large_square: Allgemeines Desing anpassen      
 :white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird    
-:white_large_square: Fixen von Empty Pictures   
-:white_check_mark: Ausblenden wenn Land nicht vorhanden ist   
-:exclamation::exclamation::exclamation: Bitte Fixen dass die Cards vertial geordnert angezeigt werden, werden gerade horizintal angezeigt, sehr irreführend
+:white_check_mark: Fixen von Empty Pictures   
+:white_check_mark: Ausblenden wenn Land nicht vorhanden ist
 
 Suche muss man über query die currentPage holen die diese immer von vorher ist 
 ![alt text](https://i.imgur.com/ZZSaAtB.png) 
