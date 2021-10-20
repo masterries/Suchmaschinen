@@ -49,7 +49,7 @@
                     <b-radio value="normal">Relevance</b-radio>
                     <b-radio value="followers">Followers</b-radio>
                     <b-radio value="videos">Videos</b-radio>
-                    <b-radio value="date">Join Date</b-radio> <!-- dachte es wär nice ein 2x2 block aus den radiobutton buttons zu haben, aber weiß noch nich wie... fänds cooler als einfach 3 stacked optionen -->
+                    <b-radio value="join_date">Join Date</b-radio> <!-- dachte es wär nice ein 2x2 block aus den radiobutton buttons zu haben, aber weiß noch nich wie... fänds cooler als einfach 3 stacked optionen -->
                   </b-form-radio-group>
                 </b-form-group>
               </div>
