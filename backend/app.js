@@ -99,14 +99,15 @@ app.get('/search', function (req, res){
                send(res,"fuzzy",title0,name,filter,order,by1);
 
               //if normal match search giving result, then send this back to the Server
-            }else{
+            }else
+            {
               /*if(queryType!="fuzzy"){
 
               
                 let body1 = esb.requestBodySearch();
                 body1.query(esb.multiMatchQuery([ "title","title._2gram","title._3gram"],name)).size(1);
                 //esb.prettyPrint(body1);
-asdasdsa
+asda
                 client.search({
                     index: "youtubechannel_auto",
                     body: body1
