@@ -1,7 +1,13 @@
-# todo Allgemein
+<p ><h1 > <img src="frontend/src/image/android-chrome-192x192.png" alt="drawing" width="30" />  Youtube Channel Search </h2></p>
 [![Build and Run Backend](https://github.com/masterries/Suchmaschinen/actions/workflows/node.js.yml/badge.svg)](https://github.com/masterries/Suchmaschinen/actions/workflows/node.js.yml)     
-[![Build and  Upload Frontend](https://github.com/masterries/Suchmaschinen/actions/workflows/nodeUpload.js.yml/badge.svg)](https://github.com/masterries/Suchmaschinen/actions/workflows/nodeUpload.js.yml)     
-http://ycs.riespatrick.de/
+[![Build and  Upload Frontend](https://github.com/masterries/Suchmaschinen/actions/workflows/nodeUpload.js.yml/badge.svg)](https://github.com/masterries/Suchmaschinen/actions/workflows/nodeUpload.js.yml) 
+
+
+
+http://ycs.riespatrick.de/    
+
+# todo Allgemein
+
 :white_check_mark: Funktionalität, Suchen mit Fehlerakzeptanz (aktuell von Hamming Abstand von 2)   
 :white_check_mark: Sortieren der Ergebnisse Nach #Video, #Follower, und Relevanz( Score)    
 :white_check_mark: Filter von Ergebnissen (siehe Todo Front+Backend)   
