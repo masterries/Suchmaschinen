@@ -55,33 +55,38 @@
               </div>
 
               <div name="categories-div">
-                <b-form-group label="Categories" v-slot="{ ariaDescribedby }">
-                  <b-form-checkbox-group
-                    id="checkbox-group-2"
-                    v-model="filter"
-                    @change="onSubmit()"
-                    :aria-describedby="ariaDescribedby"
-                    name="flavour-2"
-                    stacked
-                    switches
-                  >
-                    <b-form-checkbox value="10">Musik</b-form-checkbox>
-                    <b-form-checkbox value="24">Entertainment</b-form-checkbox>
-                    <b-form-checkbox value="20">Gaming</b-form-checkbox>
-                    <b-form-checkbox value="22">People & Blogs</b-form-checkbox>
-                    <b-form-checkbox value="26">Howto & Style</b-form-checkbox>
-                    <b-form-checkbox value="27">Education</b-form-checkbox>
-                    <b-form-checkbox value="1">Film & Animation</b-form-checkbox>
-                    <b-form-checkbox value="17">Sports</b-form-checkbox>
-                    <b-form-checkbox value="28">Science & Technology</b-form-checkbox>
-                    <b-form-checkbox value="23">Comedy</b-form-checkbox>
-                    <b-form-checkbox value="2">Cars & Vehicles</b-form-checkbox>
-                    <b-form-checkbox value="25">News & Politics</b-form-checkbox>
-                    <b-form-checkbox value="19">Travel & Events</b-form-checkbox>
-                    <b-form-checkbox value="15">Pets & Animals</b-form-checkbox>
-                  </b-form-checkbox-group>
-                  <b-button pill @click="resetCategoryFilters()">Reset category filters</b-button> <!-- no funtionality atm -->
-                </b-form-group>
+                <b-dropdown id="dropdown-form-categories" text="Categories" ref="dropdown" class="m-2">
+                  <b-form-group v-slot="{ ariaDescribedby }">
+                    <b-form-checkbox-group
+                      id="checkbox-group-2"
+                      v-model="filter"
+                      @change="onSubmit()"
+                      :aria-describedby="ariaDescribedby"
+                      name="flavour-2"
+                      stacked
+                      switches
+                    >
+                      <b-form-checkbox value="10">Musik</b-form-checkbox>
+                      <b-form-checkbox value="24">Entertainment</b-form-checkbox>
+                      <b-form-checkbox value="20">Gaming</b-form-checkbox>
+                      <b-form-checkbox value="22">People & Blogs</b-form-checkbox>
+                      <b-form-checkbox value="26">Howto & Style</b-form-checkbox>
+                      <b-form-checkbox value="27">Education</b-form-checkbox>
+                      <b-form-checkbox value="1">Film & Animation</b-form-checkbox>
+                      <b-form-checkbox value="17">Sports</b-form-checkbox>
+                      <b-form-checkbox value="28">Science & Technology</b-form-checkbox>
+                      <b-form-checkbox value="23">Comedy</b-form-checkbox>
+                      <b-form-checkbox value="2">Cars & Vehicles</b-form-checkbox>
+                      <b-form-checkbox value="25">News & Politics</b-form-checkbox>
+                      <b-form-checkbox value="19">Travel & Events</b-form-checkbox>
+                      <b-form-checkbox value="15">Pets & Animals</b-form-checkbox>
+                    </b-form-checkbox-group>
+                  </b-form-group>
+                  <template #append>
+                      <b-button @click="resetCategoryFilters()">Reset category filters</b-button>
+                    </template>
+                </b-dropdown>
+                
               </div>
 
               <div name="country-div">
