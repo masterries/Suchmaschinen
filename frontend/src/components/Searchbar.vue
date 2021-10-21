@@ -22,16 +22,19 @@
                 class="searchbar-input"
               />
             </div>
+            <template #append>
+              <b-button
+                size="lg"
+                class="ml-2"
+                type="submit"
+              >
+                Search
+              </b-button>
+            </template>
           </b-input-group>
         </div>
 
-        <b-button
-          size="lg"
-          class="ml-2"
-          type="submit"
-        >
-          Search
-        </b-button>
+        
 
       </b-form>
     </b-container>
