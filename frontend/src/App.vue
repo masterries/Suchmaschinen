@@ -86,9 +86,9 @@
                       </b-form-group>
                     </b-dropdown>
                   </template>
-                  <template #append>
-                    <b-button @click="resetCategoryFilters()">Reset category filters</b-button>
-                  </template>
+                  <b-input-group-append>
+                    <b-button text="Reset" @click="resetCategoryFilters()">Reset</b-button>
+                  </b-input-group-append>
                 </b-input-group>
                 
               </div>
@@ -120,9 +120,9 @@
                       </b-form-group>
                     </b-dropdown>  
                   </template>
-                  <template #append>
-                    <b-button pill @click="resetCountryFilters()">Reset country filters</b-button>
-                  </template>
+                  <b-input-group-append>
+                    <b-button text="Reset" @click="resetCountryFilters()">Reset</b-button>
+                  </b-input-group-append>
                 </b-input-group>
                 
               </div>
