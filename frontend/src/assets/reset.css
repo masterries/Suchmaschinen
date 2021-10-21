@@ -134,21 +134,13 @@
     padding-top: 100px;
 }
 
-/*
-.btn-group{
-    z-index: 0;
+.filter{
+    padding-bottom: 7px;
 }
-
-.btn-group-vertical{
-    z-index: 0;
-}
-.custom-control-label{
-    z-index: 0;
-}
-*/
 
 .filter .input-group-prepend{
     margin-right: -7px;
+    margin-left: -7px;
     margin-top: -7px;
     margin-bottom: -7px;
 }

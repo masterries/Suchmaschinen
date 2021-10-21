@@ -54,77 +54,81 @@
                 </b-form-group>
               </div>
 
-              <div name="categories-div" class="filter">
-                <b-input-group>
-                  <template #prepend>
-                    <b-dropdown id="dropdown-form-categories" text="Categories" ref="dropdown" class="m-2">
-                      <b-form-group v-slot="{ ariaDescribedby }">
-                        <b-form-checkbox-group
-                          id="checkbox-group-2"
-                          v-model="filter"
-                          @change="onSubmit()"
-                          :aria-describedby="ariaDescribedby"
-                          name="flavour-2"
-                          stacked
-                          switches
-                        >
-                          <b-form-checkbox value="10">Musik</b-form-checkbox>
-                          <b-form-checkbox value="24">Entertainment</b-form-checkbox>
-                          <b-form-checkbox value="20">Gaming</b-form-checkbox>
-                          <b-form-checkbox value="22">People & Blogs</b-form-checkbox>
-                          <b-form-checkbox value="26">Howto & Style</b-form-checkbox>
-                          <b-form-checkbox value="27">Education</b-form-checkbox>
-                          <b-form-checkbox value="1">Film & Animation</b-form-checkbox>
-                          <b-form-checkbox value="17">Sports</b-form-checkbox>
-                          <b-form-checkbox value="28">Science & Technology</b-form-checkbox>
-                          <b-form-checkbox value="23">Comedy</b-form-checkbox>
-                          <b-form-checkbox value="2">Cars & Vehicles</b-form-checkbox>
-                          <b-form-checkbox value="25">News & Politics</b-form-checkbox>
-                          <b-form-checkbox value="19">Travel & Events</b-form-checkbox>
-                          <b-form-checkbox value="15">Pets & Animals</b-form-checkbox>
-                        </b-form-checkbox-group>
-                      </b-form-group>
-                    </b-dropdown>
-                  </template>
-                  <b-input-group-append>
-                    <b-button text="Reset" @click="resetCategoryFilters()">Reset</b-button>
-                  </b-input-group-append>
-                </b-input-group>
-                
+              <div label="Filter">
+                Filter
+                <div name="categories-div" class="filter">
+                  <b-input-group>
+                    <template #prepend>
+                      <b-dropdown id="dropdown-form-categories" text="Categories" ref="dropdown" class="m-2">
+                        <b-form-group v-slot="{ ariaDescribedby }">
+                          <b-form-checkbox-group
+                            id="checkbox-group-2"
+                            v-model="filter"
+                            @change="onSubmit()"
+                            :aria-describedby="ariaDescribedby"
+                            name="flavour-2"
+                            stacked
+                            switches
+                          >
+                            <b-form-checkbox value="10">Musik</b-form-checkbox>
+                            <b-form-checkbox value="24">Entertainment</b-form-checkbox>
+                            <b-form-checkbox value="20">Gaming</b-form-checkbox>
+                            <b-form-checkbox value="22">People & Blogs</b-form-checkbox>
+                            <b-form-checkbox value="26">Howto & Style</b-form-checkbox>
+                            <b-form-checkbox value="27">Education</b-form-checkbox>
+                            <b-form-checkbox value="1">Film & Animation</b-form-checkbox>
+                            <b-form-checkbox value="17">Sports</b-form-checkbox>
+                            <b-form-checkbox value="28">Science & Technology</b-form-checkbox>
+                            <b-form-checkbox value="23">Comedy</b-form-checkbox>
+                            <b-form-checkbox value="2">Cars & Vehicles</b-form-checkbox>
+                            <b-form-checkbox value="25">News & Politics</b-form-checkbox>
+                            <b-form-checkbox value="19">Travel & Events</b-form-checkbox>
+                            <b-form-checkbox value="15">Pets & Animals</b-form-checkbox>
+                          </b-form-checkbox-group>
+                        </b-form-group>
+                      </b-dropdown>
+                    </template>
+                    <b-input-group-append>
+                      <b-button text="Reset" @click="resetCategoryFilters()">Reset</b-button>
+                    </b-input-group-append>
+                  </b-input-group>
+
+                </div>
+
+                <div name="country-div" class="filter">
+                  <b-input-group>                  
+                    <template #prepend>
+                      <b-dropdown id="dropdown-form-countries" text="Countries" ref="dropdown" class="m-2">
+                        <b-form-group v-slot="{ ariaDescribedby }">
+                          <b-form-checkbox-group
+                            id="checkbox-group-countries"
+                            v-model="filterCountry"
+                            @change="onSubmit()"
+                            :aria-describedby="ariaDescribedby"
+                            name="country"
+                            stacked
+                            switches
+                          > 
+                            <b-form-checkbox value="United States">United States</b-form-checkbox>
+                            <b-form-checkbox value="Great-Britain">Great-Britain</b-form-checkbox>
+                            <b-form-checkbox value="India">India</b-form-checkbox>
+                            <b-form-checkbox value="Canada">Canada</b-form-checkbox>
+                            <b-form-checkbox value="Russian Federation">Russian Federation</b-form-checkbox>
+                            <b-form-checkbox value="Australia">Australia</b-form-checkbox>
+                            <b-form-checkbox value="Germany">Germany</b-form-checkbox>
+                            <b-form-checkbox value="Other">Other</b-form-checkbox>
+                          </b-form-checkbox-group>
+                        </b-form-group>
+                      </b-dropdown>  
+                    </template>
+                    <b-input-group-append>
+                      <b-button text="Reset" @click="resetCountryFilters()">Reset</b-button>
+                    </b-input-group-append>
+                  </b-input-group>
+                </div>                
               </div>
 
-              <div name="country-div" class="filter">
-                <b-input-group>                  
-                  <template #prepend>
-                    <b-dropdown id="dropdown-form-countries" text="Countries" ref="dropdown" class="m-2">
-                      <b-form-group v-slot="{ ariaDescribedby }">
-                        <b-form-checkbox-group
-                          id="checkbox-group-countries"
-                          v-model="filterCountry"
-                          @change="onSubmit()"
-                          :aria-describedby="ariaDescribedby"
-                          name="country"
-                          stacked
-                          switches
-                        > 
-                          <b-form-checkbox value="United States">United States</b-form-checkbox>
-                          <b-form-checkbox value="Great-Britain">Great-Britain</b-form-checkbox>
-                          <b-form-checkbox value="India">India</b-form-checkbox>
-                          <b-form-checkbox value="Canada">Canada</b-form-checkbox>
-                          <b-form-checkbox value="Russian Federation">Russian Federation</b-form-checkbox>
-                          <b-form-checkbox value="Australia">Australia</b-form-checkbox>
-                          <b-form-checkbox value="Germany">Germany</b-form-checkbox>
-                          <b-form-checkbox value="Other">Other</b-form-checkbox>
-                        </b-form-checkbox-group>
-                      </b-form-group>
-                    </b-dropdown>  
-                  </template>
-                  <b-input-group-append>
-                    <b-button text="Reset" @click="resetCountryFilters()">Reset</b-button>
-                  </b-input-group-append>
-                </b-input-group>
-                
-              </div>
+              
 
               <div name="datepicker-div"> <!-- possible other solution? https://innologica.github.io/vue2-daterange-picker -->
                 <b-form-datepicker id="datepicker1" v-model="date1" @change="onSubmit()" @context="onContext1" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation1" />
