@@ -22,7 +22,7 @@ http://ycs.riespatrick.de/
 :white_check_mark: Live Suche :shipit:  
 :white_large_square: :heavy_dollar_sign: Live autokomplition  
 :white_large_square: :heavy_dollar_sign: `type ahead` Vorschläge mehre Anzeigen in Liste  
-:white_large_square: Filter Dropdown Artig (ein Button für alles?)Platzsparender  
+:white_check_mark: Filter Dropdown Artig (ein Button für alles?)Platzsparender  
 
 
 
@@ -40,6 +40,7 @@ http://ycs.riespatrick.de/
 :white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird    
 :white_check_mark: Fixen von Empty Pictures   
 :white_check_mark: Ausblenden wenn Land nicht vorhanden ist
+:white_check_mark: Fixen des "Search"-Buttons in der Suchleiste. Trotz "append" ist Platz zwischen Leiste und Knopf
 
 Suche muss man über query die currentPage holen die diese immer von vorher ist 
 ![alt text](https://i.imgur.com/ZZSaAtB.png) 
