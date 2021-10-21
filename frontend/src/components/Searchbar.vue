@@ -13,7 +13,7 @@
 
             <div class="flex-fill">
               <b-form-input
-                placeholder="Search term"
+                placeholder="Search ..."
                 :value="value"
                 @input="onQueryInput"
                 size="lg"
@@ -26,7 +26,6 @@
         </div>
 
         <b-button
-          variant="success"
           size="lg"
           class="ml-2"
           type="submit"
