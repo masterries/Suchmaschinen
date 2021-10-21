@@ -128,9 +128,27 @@
                 </div>                
               </div>
 
-              
-
               <div name="datepicker-div"> <!-- possible other solution? https://innologica.github.io/vue2-daterange-picker -->
+                <date-range-picker
+                        ref="picker"
+                        :opens="opens"
+                        :locale-data="{ firstDay: 1, format: 'dd-mm-yyyy HH:mm:ss' }"
+                        :minDate="minDate" :maxDate="maxDate"
+                        :singleDatePicker="range"
+                        :showWeekNumbers="showWeekNumbers"
+                        :showDropdowns="showDropdowns"
+                        :autoApply="autoApply"
+                        v-model="dateRange"
+                        @update="updateValues"
+                        @toggle="checkOpen"
+                        :linkedCalendars="linkedCalendars"
+                        :dateFormat="dateFormat"
+                >
+                  <template v-slot:input="picker" style="min-width: 350px;">
+                        {{ picker.startDate | date }} - {{ picker.endDate | date }}
+                  </template>
+                </date-range-picker>
+                
                 <b-form-datepicker id="datepicker1" v-model="date1" @change="onSubmit()" @context="onContext1" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation1" />
                 <b-form-datepicker id="datepicker2" v-model="date2" @change="onSubmit()" @context="onContext2" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation2" />     
               </div>
@@ -292,6 +310,7 @@
         errors :[],
         date1 : '2009-12-26',
         date2 : '2019-12-28',
+        dateRange:['2009-12-26','2019-12-28'],
         min: minDate,
         max: maxDate,
         valueRangeVideos : '',
