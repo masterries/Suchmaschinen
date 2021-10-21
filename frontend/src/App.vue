@@ -54,7 +54,7 @@
                 </b-form-group>
               </div>
 
-              <div name="categories-div">
+              <div name="categories-div" class="filter">
                 <b-input-group>
                   <template #prepend>
                     <b-dropdown id="dropdown-form-categories" text="Categories" ref="dropdown" class="m-2">
@@ -93,9 +93,8 @@
                 
               </div>
 
-              <div name="country-div">
-                <b-input-group>
-                  
+              <div name="country-div" class="filter">
+                <b-input-group>                  
                   <template #prepend>
                     <b-dropdown id="dropdown-form-countries" text="Countries" ref="dropdown" class="m-2">
                       <b-form-group v-slot="{ ariaDescribedby }">
@@ -170,7 +169,7 @@
                 </b-input-group>
               </div>
 
-              <div>
+              <div class="range-pages">
                 <label for="range-pages">Hits per page</label>
                 <b-input-group>
                 

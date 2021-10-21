@@ -49,16 +49,16 @@
 }
 .footer #container{
 	width:100%;
-height:100%;
-  position:relative;
-  top:0;
-  left:0;
+    height:100%;
+    position:relative;
+    top:0;
+    left:0;
 	background: #0E95E9;
 }
 .footer #cont{
-  position:relative;
-  top:-45px;
-  right:190px;
+    position:relative;
+    top:-45px;
+    right:190px;
 	width:150px;
 	height:auto;
 	margin:0 auto;
@@ -66,11 +66,10 @@ height:100%;
 .footer_center{
 	width:100%;
 	float:left;
-  text-align:center;
+    text-align:center;
 }
 .footer h3{
 	font-weight: 100;
-    
     margin-top: 10px;
 }
 
@@ -104,14 +103,11 @@ height:100%;
     margin-left: 15%;
     margin-top: 15%;
     margin-bottom: 5%;
-    /* box-shadow: 10px 20px 15px silver; */
-    /* border: 10px double red; */
     border: 1px solid #858f97;
     border-radius: 30%;
 }
 
 .searchbar{
-    /*margin-top: 10px;*/
     position: fixed;
     width: 100%;
     z-index: 5;
@@ -138,6 +134,7 @@ height:100%;
     padding-top: 100px;
 }
 
+/*
 .btn-group{
     z-index: 0;
 }
@@ -148,8 +145,15 @@ height:100%;
 .custom-control-label{
     z-index: 0;
 }
+*/
 
-.dropdown-menu.show{
+.filter .input-group-prepend{
+    margin-right: -7px;
+    margin-top: -7px;
+    margin-bottom: -7px;
+}
+
+.range-pages .dropdown-menu.show{
     left: -535% !important;
     width: 540%;
 }
