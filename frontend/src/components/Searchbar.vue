@@ -25,7 +25,7 @@
             <template #append>
               <b-button
                 size="lg"
-                class="ml-2"
+                class="ml-2 submit"
                 type="submit"
               >
                 Search
