@@ -304,8 +304,7 @@
         page:"0",
         treffer : "12",
         active:"",
-        pmax : "10",
-        abuser : true
+        pmax : "10"
       }
     },
 
