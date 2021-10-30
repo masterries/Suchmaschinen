@@ -73,20 +73,20 @@
                             stacked
                             switches
                           >
-                            <b-form-checkbox value="10">{{categoryCount10}}Musik</b-form-checkbox>
-                            <b-form-checkbox value="24">{{categoryCount24}}Entertainment</b-form-checkbox>
-                            <b-form-checkbox value="20">{{categoryCount20}}Gaming</b-form-checkbox>
-                            <b-form-checkbox value="22">{{categoryCount22}}People & Blogs</b-form-checkbox>
-                            <b-form-checkbox value="26">{{categoryCount26}}Howto & Style</b-form-checkbox>
-                            <b-form-checkbox value="27">{{categoryCount27}}Education</b-form-checkbox>
-                            <b-form-checkbox value="1">{{categoryCount1}}Film & Animation</b-form-checkbox>
-                            <b-form-checkbox value="17">{{categoryCount17}}Sports</b-form-checkbox>
-                            <b-form-checkbox value="28">{{categoryCount28}}Science & Technology</b-form-checkbox>
-                            <b-form-checkbox value="23">{{categoryCount23}}Comedy</b-form-checkbox>
-                            <b-form-checkbox value="2">{{categoryCount2}}Cars & Vehicles</b-form-checkbox>
-                            <b-form-checkbox value="25">{{categoryCount25}}News & Politics</b-form-checkbox>
-                            <b-form-checkbox value="19">{{categoryCount19}}Travel & Events</b-form-checkbox>
-                            <b-form-checkbox value="15">{{categoryCount15}}Pets & Animals</b-form-checkbox>
+                            <b-form-checkbox value="10">{{this.categoryCount10}} - Musik</b-form-checkbox>
+                            <b-form-checkbox value="24">{{this.categoryCount24}} - Entertainment</b-form-checkbox>
+                            <b-form-checkbox value="20">{{this.categoryCount20}} - Gaming</b-form-checkbox>
+                            <b-form-checkbox value="22">{{this.categoryCount22}} - People & Blogs</b-form-checkbox>
+                            <b-form-checkbox value="26">{{this.categoryCount26}} - Howto & Style</b-form-checkbox>
+                            <b-form-checkbox value="27">{{this.categoryCount27}} - Education</b-form-checkbox>
+                            <b-form-checkbox value="1">{{this.categoryCount1}} - Film & Animation</b-form-checkbox>
+                            <b-form-checkbox value="17">{{this.categoryCount17}} - Sports</b-form-checkbox>
+                            <b-form-checkbox value="28">{{this.categoryCount28}} - Science & Technology</b-form-checkbox>
+                            <b-form-checkbox value="23">{{this.categoryCount23}} - Comedy</b-form-checkbox>
+                            <b-form-checkbox value="2">{{this.categoryCount2}} - Cars & Vehicles</b-form-checkbox>
+                            <b-form-checkbox value="25">{{this.categoryCount25}} - News & Politics</b-form-checkbox>
+                            <b-form-checkbox value="19">{{this.categoryCount19}} - Travel & Events</b-form-checkbox>
+                            <b-form-checkbox value="15">{{this.categoryCount15}} - Pets & Animals</b-form-checkbox>
                           </b-form-checkbox-group>
                         </b-form-group>
                       </b-dropdown>
@@ -341,7 +341,6 @@
 
       console.log(page)
 
-      
         var datea = this.date1
         var dateb = this.date2
 
@@ -349,10 +348,6 @@
          datea = this.date2
          dateb = this.date1
       }
-
-
-      
-
 
         axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
                   +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+datea+";"+dateb+
@@ -367,6 +362,20 @@
               this.searchResults = response.data.hits.hits;
             }
             this.pmax = response.data.aggregations.total.value / this.treffer
+            this.categoryCount10 = response.data.aggregations.count10.value
+            this.categoryCount24 = response.data.aggregations.count24.value
+            this.categoryCount20 = response.data.aggregations.count20.value
+            this.categoryCount22 = response.data.aggregations.count22.value
+            this.categoryCount26 = response.data.aggregations.count26.value
+            this.categoryCount27 = response.data.aggregations.count27.value
+            this.categoryCount1 = response.data.aggregations.count1.value
+            this.categoryCount17 = response.data.aggregations.count17.value
+            this.categoryCount28 = response.data.aggregations.count28.value
+            this.categoryCount23 = response.data.aggregations.count23.value
+            this.categoryCount2 = response.data.aggregations.count2.value
+            this.categoryCount25 = response.data.aggregations.count25.value
+            this.categoryCount19 = response.data.aggregations.count19.value
+            this.categoryCount15 = response.data.aggregations.count15.value
             console.log(this.pmax);
           })
           .catch((error) => {
@@ -394,18 +403,6 @@
         this.treffer = value;
         this.onSubmit();
       },
-
-      onContext2(context){
-        if (context.date2 == null) {
-          this.dateValidation2 = null
-        }else{
-          if (context.date2 < this.date1) {
-            this.dateValidation2 = false
-          }else{
-            this.dateValidation2 = true
-          }
-        }      
-      }
     },
 
     beforeMount(){
