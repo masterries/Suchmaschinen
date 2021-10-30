@@ -81,8 +81,9 @@ app.get('/search', function (req, res){
     console.log(filter["follower"][0])
     var follower = (isBetween(1,100000000,filter["follower"][0]))&&(isBetween(1,100000000,filter["follower"][1]));
     var videos = (isBetween(1,1000000,filter["video"][0]))&&(isBetween(1,1000000,filter["video"][1]));
+    var date  = isDate(filter["date"][0])&&isDate(filter["date"][1]);
     var i = (isBetween(1,1000,size))&&(isBetween(1,10000,page));
-    return i && follower&&videos;
+    return i && follower&&videos&&date;
     
   }
 
@@ -108,6 +109,10 @@ app.get('/search', function (req, res){
   function isInt(value) {
     var x = parseFloat(value);
     return !isNaN(value) && (x | 0) === x;
+  }
+
+  function isDate(date){
+    return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
   }
 
   
