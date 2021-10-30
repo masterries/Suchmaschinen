@@ -232,6 +232,8 @@
           base-url="#"
           class="mt-4"
           align="center"
+                  first-number
+        last-number
         >
           <template #ellipsis-text>
           </template>
@@ -308,7 +310,7 @@
         page:"0",
         treffer : "12",
         active:"",
-        pmax : "10"
+        pmax : "2"
       }
     },
 
@@ -345,11 +347,13 @@
              this.errors =[];
              //this.sugg = response.data[0]._source.Suggestion;
              //console.log(this.sugg);
-            if (response.data === null) {
+            if (response.data.hits.hits === null) {
               this.searchResults = [];
             } else {
-              this.searchResults = response.data;
+              this.searchResults = response.data.hits.hits;
             }
+            this.pmax = response.data.aggregations.total.value / this.treffer
+            console.log(this.pmax);
           })
           .catch((error) => {
             //window.alert("Backend not reachable on " + host + +  ":" + port, "Timeout");
