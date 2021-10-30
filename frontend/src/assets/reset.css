@@ -138,18 +138,26 @@
     padding-bottom: 8px;
 }
 
+.filter .btn-group{
+    width: 100%;
+}
+
 .filter .input-group-prepend{
     margin-right: -8px;
     margin-left: -8px;
     margin-top: -8px;
     margin-bottom: -8px;
+    width: 80%;
 }
-
-#dropdown-form-countries{
-    width: 115px;
+.filter .input-group-append{
+    width: 20%;
 }
 
 .range-pages .dropdown-menu.show{
     left: -535% !important;
     width: 540%;
+}
+
+.order{
+    width: 100%;
 }

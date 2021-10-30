@@ -29,6 +29,8 @@
                     :aria-describedby="ariaDescribedby"
                     name="radios-stacked-order"
                     buttons
+                    stacked
+                    class="order"
                   >
                     <b-radio value="asc">Ascending</b-radio>
                     <b-radio value="desc">Descending</b-radio>
@@ -45,6 +47,7 @@
                     name="radios-stacked-order-values"
                     stacked
                     buttons
+                    class="order"
                   >
                     <b-radio value="normal">Relevance</b-radio>
                     <b-radio value="followers">Followers</b-radio>
@@ -60,7 +63,7 @@
                   <b-input-group>
                     <template #prepend>
                       <b-dropdown id="dropdown-form-categories" text="Categories" ref="dropdown" class="m-2">
-                        <b-form-group v-slot="{ ariaDescribedby }">
+                        <b-form-group v-slot="{ ariaDescribedby }" >
                           <b-form-checkbox-group
                             id="checkbox-group-2"
                             v-model="filter"
@@ -131,6 +134,7 @@
               
 
               <div name="datepicker-div"> <!-- possible other solution? https://innologica.github.io/vue2-daterange-picker -->
+                <label for="range-dates">Range Dates</label>
                 <b-form-datepicker id="datepicker1" v-model="date1" @input="onSubmit()" class="mb-2" :min="min" :max="max" :state="dateValidation1" />
                 <b-form-datepicker id="datepicker2" v-model="date2" @input="onSubmit()" class="mb-2" :min="min" :max="max" :state="dateValidation2" />     
               </div>
