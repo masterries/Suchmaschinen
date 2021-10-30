@@ -311,6 +311,7 @@
         treffer : "12",
         active:"",
         pmax : "2",
+        maxRes : 9999,
         categoryCount10 : "0",
         categoryCount24 : "0",
         categoryCount20 : "0",
@@ -362,6 +363,13 @@
               this.searchResults = response.data.hits.hits;
             }
             this.pmax = response.data.aggregations.total.value / this.treffer
+                        if(response.data.aggregations.total.value % this.treffer > 0){
+              this.pmax +=1;
+            }
+            if(response.data.aggregations.total.value > this.maxRes){
+              this.pmax = this.maxRes/this.treffer
+
+            }
             this.categoryCount10 = response.data.aggregations.count10.value
             this.categoryCount24 = response.data.aggregations.count24.value
             this.categoryCount20 = response.data.aggregations.count20.value
