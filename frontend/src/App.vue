@@ -131,8 +131,8 @@
               
 
               <div name="datepicker-div"> <!-- possible other solution? https://innologica.github.io/vue2-daterange-picker -->
-                <b-form-datepicker id="datepicker1" v-model="date1" @input="onSubmit()" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation1" />
-                <b-form-datepicker id="datepicker2" v-model="date2" @input="onSubmit()" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation2" />     
+                <b-form-datepicker id="datepicker1" v-model="date1" @input="onSubmit()" class="mb-2" :min="min" :max="max" :state="dateValidation1" />
+                <b-form-datepicker id="datepicker2" v-model="date2" @input="onSubmit()" class="mb-2" :min="min" :max="max" :state="dateValidation2" />     
               </div>
 
               <div> <!-- maybe this is better: http://drewcovi.github.io/bootstrap-range/ -->
