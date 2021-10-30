@@ -22,15 +22,6 @@
                 class="searchbar-input"
               />
             </div>
-            <template #append>
-              <b-button
-                size="lg"
-                class="ml-2 submit"
-                type="submit"
-              >
-                Search
-              </b-button>
-            </template>
           </b-input-group>
         </div>
 
@@ -68,5 +59,4 @@ export default {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
-
 </style>
