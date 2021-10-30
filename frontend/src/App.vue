@@ -371,11 +371,22 @@
       hitsDropdown(value){
         this.treffer = value;
         this.onSubmit();
+      },
+
+      onContext2(context){
+        if (context.date2 == null) {
+          this.dateValidation2 = null
+        }else{
+          if (context.date2 < this.date1) {
+            this.dateValidation2 = false
+          }else{
+            this.dateValidation2 = true
+          }
+        }      
       }
+    },
 
-      
-
-    ,beforeMount(){
+    beforeMount(){
       this.onSubmit();
     }
   }
