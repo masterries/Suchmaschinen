@@ -215,7 +215,7 @@ asda
     }
 
     body.agg(esb.valueCountAggregation("total", "category_id"))
-    body.agg(esb.termsAggregation("totalCat", "category_id"))
+    body.agg(esb.termsAggregation("totalCat", "category_id").size(20))
 
      a= body.query(typ)
 
