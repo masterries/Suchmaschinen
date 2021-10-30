@@ -73,20 +73,20 @@
                             stacked
                             switches
                           >
-                            <b-form-checkbox value="10">Musik</b-form-checkbox>
-                            <b-form-checkbox value="24">Entertainment</b-form-checkbox>
-                            <b-form-checkbox value="20">Gaming</b-form-checkbox>
-                            <b-form-checkbox value="22">People & Blogs</b-form-checkbox>
-                            <b-form-checkbox value="26">Howto & Style</b-form-checkbox>
-                            <b-form-checkbox value="27">Education</b-form-checkbox>
-                            <b-form-checkbox value="1">Film & Animation</b-form-checkbox>
-                            <b-form-checkbox value="17">Sports</b-form-checkbox>
-                            <b-form-checkbox value="28">Science & Technology</b-form-checkbox>
-                            <b-form-checkbox value="23">Comedy</b-form-checkbox>
-                            <b-form-checkbox value="2">Cars & Vehicles</b-form-checkbox>
-                            <b-form-checkbox value="25">News & Politics</b-form-checkbox>
-                            <b-form-checkbox value="19">Travel & Events</b-form-checkbox>
-                            <b-form-checkbox value="15">Pets & Animals</b-form-checkbox>
+                            <b-form-checkbox value="10">{{categoryCount10}}Musik</b-form-checkbox>
+                            <b-form-checkbox value="24">{{categoryCount24}}Entertainment</b-form-checkbox>
+                            <b-form-checkbox value="20">{{categoryCount20}}Gaming</b-form-checkbox>
+                            <b-form-checkbox value="22">{{categoryCount22}}People & Blogs</b-form-checkbox>
+                            <b-form-checkbox value="26">{{categoryCount26}}Howto & Style</b-form-checkbox>
+                            <b-form-checkbox value="27">{{categoryCount27}}Education</b-form-checkbox>
+                            <b-form-checkbox value="1">{{categoryCount1}}Film & Animation</b-form-checkbox>
+                            <b-form-checkbox value="17">{{categoryCount17}}Sports</b-form-checkbox>
+                            <b-form-checkbox value="28">{{categoryCount28}}Science & Technology</b-form-checkbox>
+                            <b-form-checkbox value="23">{{categoryCount23}}Comedy</b-form-checkbox>
+                            <b-form-checkbox value="2">{{categoryCount2}}Cars & Vehicles</b-form-checkbox>
+                            <b-form-checkbox value="25">{{categoryCount25}}News & Politics</b-form-checkbox>
+                            <b-form-checkbox value="19">{{categoryCount19}}Travel & Events</b-form-checkbox>
+                            <b-form-checkbox value="15">{{categoryCount15}}Pets & Animals</b-form-checkbox>
                           </b-form-checkbox-group>
                         </b-form-group>
                       </b-dropdown>
@@ -310,7 +310,21 @@
         page:"0",
         treffer : "12",
         active:"",
-        pmax : "2"
+        pmax : "2",
+        categoryCount10 : "0",
+        categoryCount24 : "0",
+        categoryCount20 : "0",
+        categoryCount22 : "0",
+        categoryCount26 : "0",
+        categoryCount27 : "0",
+        categoryCount1 : "0",
+        categoryCount17 : "0",
+        categoryCount28 : "0",
+        categoryCount23 : "0",
+        categoryCount2 : "0",
+        categoryCount25 : "0",
+        categoryCount19 : "0",
+        categoryCount15 : "0"
       }
     },
 
