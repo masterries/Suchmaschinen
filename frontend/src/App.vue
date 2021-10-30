@@ -131,8 +131,8 @@
               
 
               <div name="datepicker-div"> <!-- possible other solution? https://innologica.github.io/vue2-daterange-picker -->
-                <b-form-datepicker id="datepicker1" v-model="date1" @change="onSubmit()" @context="onContext1" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation1" />
-                <b-form-datepicker id="datepicker2" v-model="date2" @change="onSubmit()" @context="onContext2" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation2" />     
+                <b-form-datepicker id="datepicker1" v-model="date1" @input="onSubmit()" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation1" />
+                <b-form-datepicker id="datepicker2" v-model="date2" @input="onSubmit()" class="mb-2" today-button reset-button close-button :min="min" :max="max" :state="dateValidation2" />     
               </div>
 
               <div> <!-- maybe this is better: http://drewcovi.github.io/bootstrap-range/ -->
@@ -261,7 +261,7 @@
   import resultCard from './components/ResultCard.vue';
   import searchbar from './components/Searchbar.vue';
   import axios from 'axios';
-  const host = "http://ec2-54-196-94-19.compute-1.amazonaws.com";
+  const host = "http://localhost";
   const port = "5050"
 
   export default {
@@ -304,7 +304,8 @@
         page:"0",
         treffer : "12",
         active:"",
-        pmax : "10"
+        pmax : "10",
+        abuser : true
       }
     },
 
@@ -318,12 +319,23 @@
       //placeholder Variable
       console.log(this.active)
       var page = window.location.href.split("#")[1]
+      
+        console.log(this.date2 + "Sdxasd" + this.date1);
+      
+        var datea = this.date1
+        var dateb = this.date2
+
+      if(this.date1 > this.date2){
+         datea = this.date2
+         dateb = this.date1
+      }
+
 
       
 
 
         axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
-                  +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+this.date1+";"+this.date2+
+                  +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+datea+";"+dateb+
                   "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry+"&treffer="+this.treffer +"&page=" +page)
           .then((response) => {
              this.errors =[];
