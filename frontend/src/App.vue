@@ -142,8 +142,8 @@
 
               <div name="datepicker-div"> <!-- possible other solution? https://innologica.github.io/vue2-daterange-picker -->
                 <label for="range-dates">Range Dates</label>
-                <b-form-datepicker id="datepicker1" v-model="date1" @input="onSubmit()" class="mb-2" :min="min" :max="max" :state="dateValidation1" />
-                <b-form-datepicker id="datepicker2" v-model="date2" @input="onSubmit()" class="mb-2" :min="min" :max="max" :state="dateValidation2" />     
+                <b-form-datepicker id="datepicker1" v-model="date1" @input="onSubmit()" class="mb-2" :min="min" :max="max" />
+                <b-form-datepicker id="datepicker2" v-model="date2" @input="onSubmit()" class="mb-2" :min="min" :max="max" />     
               </div>
 
               <div> <!-- maybe this is better: http://drewcovi.github.io/bootstrap-range/ -->
@@ -274,7 +274,7 @@
 import resultCard from "./components/ResultCard.vue";
 import searchbar from "./components/Searchbar.vue";
 import axios from "axios";
-const host = "http://ec2-54-196-94-19.compute-1.amazonaws.com";
+const host = "http://localhost";
 const port = "5050";
 
 export default {
@@ -396,7 +396,17 @@ export default {
             page
         )
         .then((response) => {
-          this.errors = [];
+          if(response.data == "Error"){
+            this.errors = response;
+             this.errors.name =
+              "While Waiting for Response from BackendServer on " +
+              host +
+              ":" +
+              port + " Malforming Parameters";
+              this.searchResults = [];
+
+          }else{
+             this.errors = [];
           console.log(response);
           //this.sugg = response.data[0]._source.Suggestion;
           //console.log(this.sugg);
@@ -415,11 +425,10 @@ export default {
           }
           this.buckets = response.data.aggregations.totalCat.buckets;
           this.updateBuckets();
+            
+          }
+         
 
-          console.log(this.categoryCount10);
-          console.log(this.buckets);
-
-          console.log(this.pmax);
         })
 
         .catch((error) => {
@@ -456,6 +465,7 @@ export default {
       this.categoryCount25= 0;
       this.categoryCount19= 0;
       this.categoryCount15= 0;
+
       this.buckets.forEach((element) => {
         switch (element.key) {
           case 10:

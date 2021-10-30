@@ -41,14 +41,8 @@ app.get('/search', function (req, res){
     if(by1 == "normal"){
         by1 = "_score"
     }
+ 
 
-    //todo  
-    let basicInfo = {};
-    basicInfo["res"] = res;
-    basicInfo["typMatch"] = "";
-    basicInfo["searchby"] = "title";
-    basicInfo["Index"] = "youtubechannel";
-    
 
     let filter = {};
     filter["category"] = filtersRaw.split(",");
@@ -59,24 +53,67 @@ app.get('/search', function (req, res){
     filter["size"] = size;
     filter["page"] = page;
 
+    if (!checkValues(page,size,filter )){
+      res.send("Error")
 
-    console.log(page);
+    }else{
+      console.log(page);
 
     
-    if(name == ""){
-      //Empty Search 
-        send(res,"all","title",name,filter,order,by1,req);
-    }else{
-      // Search with keayword
-        send(res,"match","title",name,filter,order,by1,req);
-    }  
+      if(name == ""){
+        //Empty Search 
+          send(res,"all","title",name,filter,order,by1,req);
+      }else{
+        // Search with keayword
+          send(res,"match","title",name,filter,order,by1,req);
+      }  
+
+    }
+
+
+
+   
     
   })
 
+  function checkValues(page,size,filter){
 
-  //WIP: Temp Suggestion variable 
-  sugg ="";
-  //Aufrümens
+    console.log(filter["follower"][0])
+    var follower = (isBetween(1,100000000,filter["follower"][0]))&&(isBetween(1,100000000,filter["follower"][1]));
+    var videos = (isBetween(1,1000000,filter["video"][0]))&&(isBetween(1,1000000,filter["video"][1]));
+    var i = (isBetween(1,1000,size))&&(isBetween(1,10000,page));
+    return i && follower&&videos;
+    
+  }
+
+  function isBetween(min, max, input){
+    console.log("input " + input)
+    if(!isInt(input)){
+      console.log("hass")
+      return false;
+    }
+      if(input > max){
+        console.log("max")
+        return false;
+      }
+      if(input< min){
+        console.log("min")
+        return false;
+      }
+      return true;
+
+  }
+
+
+  function isInt(value) {
+    var x = parseFloat(value);
+    return !isNaN(value) && (x | 0) === x;
+  }
+
+  
+
+ 
+
 
 
 
@@ -102,33 +139,7 @@ app.get('/search', function (req, res){
               //if normal match search giving result, then send this back to the Server
             }else
             {
-              /*if(queryType!="fuzzy"){
 
-              
-                let body1 = esb.requestBodySearch();
-                body1.query(esb.multiMatchQuery([ "title","title._2gram","title._3gram"],name)).size(1);
-                //esb.prettyPrint(body1);
-asda
-                client.search({
-                    index: "youtubechannel_auto",
-                    body: body1
-                })
-                .then(response => {
-                    if(response.hits.hits !=0){
-                        a = response.hits.hits;
-                        sugg  = a[0]._source.title;
-                    }
-
-                })
-
-
-
-               
-                console.log(sugg)
-                if(sugg != 0){
-                    results.hits.hits[0]._source["Suggestion"] = sugg;
-                    console.log(results.hits.hits[0]._source);
-                }}*/
 
                 console.log(results)
                
