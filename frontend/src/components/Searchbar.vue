@@ -69,6 +69,4 @@ export default {
   border-bottom-left-radius: 0 !important;
 }
 
-
-
 </style>
