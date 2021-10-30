@@ -5,10 +5,11 @@
     <div class ="card-body"> 
       <h5 class="card-title">{{content._source.title}} </h5>
       <div class="card-text"> 
-   
+    
     Follower : {{content._source.followers}} <br>
     Join Date : {{content._source.join_date}} <br>
     Videos : {{content._source.videos}} <br>
+    Category : {{content._source.category_name}} <br>
    <!--  !-->
 
       

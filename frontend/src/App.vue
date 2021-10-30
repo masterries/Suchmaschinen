@@ -1,6 +1,8 @@
 <template>
 
+
   <div class="app" id="app">
+
     <meta name="referrer" content="no-referrer"/>
     <div class="searchbar">
       <searchbar id="searchbar" v-model="searchQuery" @input="onSubmit" v-on:click="onSubmit"/>
@@ -60,33 +62,38 @@
               <div label="Filter">
                 Filter
                 <div name="categories-div" class="filter">
+
                   <b-input-group>
                     <template #prepend>
                       <b-dropdown id="dropdown-form-categories" text="Categories" ref="dropdown" class="m-2">
-                        <b-form-group v-slot="{ ariaDescribedby }" >
+
+                        <b-form-group v-slot="{ ariaDescribedby }"  >
+
+
                           <b-form-checkbox-group
                             id="checkbox-group-2"
                             v-model="filter"
-                            @change="onSubmit()"
+                          
                             :aria-describedby="ariaDescribedby"
                             name="flavour-2"
                             stacked
                             switches
+                            @change="onSubmit()"
                           >
-                            <b-form-checkbox value="10">{{this.categoryCount10}} - Musik</b-form-checkbox>
-                            <b-form-checkbox value="24">{{this.categoryCount24}} - Entertainment</b-form-checkbox>
-                            <b-form-checkbox value="20">{{this.categoryCount20}} - Gaming</b-form-checkbox>
-                            <b-form-checkbox value="22">{{this.categoryCount22}} - People & Blogs</b-form-checkbox>
-                            <b-form-checkbox value="26">{{this.categoryCount26}} - Howto & Style</b-form-checkbox>
-                            <b-form-checkbox value="27">{{this.categoryCount27}} - Education</b-form-checkbox>
-                            <b-form-checkbox value="1">{{this.categoryCount1}} - Film & Animation</b-form-checkbox>
-                            <b-form-checkbox value="17">{{this.categoryCount17}} - Sports</b-form-checkbox>
-                            <b-form-checkbox value="28">{{this.categoryCount28}} - Science & Technology</b-form-checkbox>
-                            <b-form-checkbox value="23">{{this.categoryCount23}} - Comedy</b-form-checkbox>
-                            <b-form-checkbox value="2">{{this.categoryCount2}} - Cars & Vehicles</b-form-checkbox>
-                            <b-form-checkbox value="25">{{this.categoryCount25}} - News & Politics</b-form-checkbox>
-                            <b-form-checkbox value="19">{{this.categoryCount19}} - Travel & Events</b-form-checkbox>
-                            <b-form-checkbox value="15">{{this.categoryCount15}} - Pets & Animals</b-form-checkbox>
+                            <b-form-checkbox value="10"><span style="display:inline-block; width: 130px;">  Musik        </span>{{categoryCount10}} </b-form-checkbox>
+                            <b-form-checkbox value="24"><span style="display:inline-block; width: 130px;">  Entertainment    </span>{{categoryCount24}}</b-form-checkbox>
+                            <b-form-checkbox value="20"><span style="display:inline-block; width: 130px;">  Gaming            </span>{{categoryCount20}}</b-form-checkbox>
+                            <b-form-checkbox value="22"><span style="display:inline-block; width: 130px;">  People & Blogs    </span>{{categoryCount22}}</b-form-checkbox>
+                            <b-form-checkbox value="26"><span style="display:inline-block; width: 130px;">  Howto & Style     </span>{{categoryCount26}}</b-form-checkbox>
+                            <b-form-checkbox value="27"><span style="display:inline-block; width: 130px;">  Education         </span>{{categoryCount27}}</b-form-checkbox>
+                            <b-form-checkbox value="1"> <span style="display:inline-block; width: 130px;">  Film & Animation </span>{{categoryCount1}}</b-form-checkbox>
+                            <b-form-checkbox value="17"><span style="display:inline-block; width: 130px;">  Sports            </span>{{categoryCount17}}</b-form-checkbox>
+                            <b-form-checkbox value="28"><span style="display:inline-block; width: 130px;">  Science & Tech    </span>{{categoryCount28}}</b-form-checkbox>
+                            <b-form-checkbox value="23"><span style="display:inline-block; width: 130px;">  Comedy            </span>{{categoryCount23}}</b-form-checkbox>
+                            <b-form-checkbox value="2"> <span style="display:inline-block; width: 130px;">  Cars & Vehicles  </span>{{categoryCount2}}</b-form-checkbox>
+                            <b-form-checkbox value="25"><span style="display:inline-block; width: 130px;">  News & Politic    </span>{{categoryCount25}} </b-form-checkbox>
+                            <b-form-checkbox value="19"><span style="display:inline-block; width: 130px;">  Travel & Event </span>{{categoryCount19}}</b-form-checkbox>
+                            <b-form-checkbox value="15"><span style="display:inline-block; width: 130px;">  Pets & Animals </span>{{categoryCount15}}</b-form-checkbox>
                           </b-form-checkbox-group>
                         </b-form-group>
                       </b-dropdown>
@@ -264,163 +271,258 @@
 
 
 <script>
-  import resultCard from './components/ResultCard.vue';
-  import searchbar from './components/Searchbar.vue';
-  import axios from 'axios';
-  const host = "http://localhost";
-  const port = "5050"
+import resultCard from "./components/ResultCard.vue";
+import searchbar from "./components/Searchbar.vue";
+import axios from "axios";
+const host = "http://localhost";
+const port = "5050";
 
-  export default {
-    name: 'App',
+export default {
+  name: "App",
 
-    components: {
-      resultCard,
-      searchbar
-    },
+  components: {
+    resultCard,
+    searchbar,
+  },
 
-    metaInfo: {
-      title: 'Suchmaschinen template'
-    },
+  metaInfo: {
+    title: "Suchmaschinen template",
+  },
 
-    data() {
-      const now = new Date()
-      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-      const minDate = new Date("2000-01-01")
-      const maxDate = new Date(today)
+  data() {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const minDate = new Date("2000-01-01");
+    const maxDate = new Date(today);
 
-      return {
-        sort : "desc",
-        searchQuery: '',
-        searchResults: [],
-        sortBy : "followers",
-        filter : [],
-        filterCountry : [],
-        errors :[],
-        date1 : '2009-12-26',
-        date2 : '2019-12-28',
-        min: minDate,
-        max: maxDate,
-        valueRangeVideos : '',
-        valueRangeFollowers : '',
-        followersUpper : '10000000',
-        followersLower : '1',
-        videoLower : '1',
-        videoUpper : '100000',
-        sugg: "",
-        page:"0",
-        treffer : "12",
-        active:"",
-        pmax : "2",
-        maxRes : 9999,
-        categoryCount10 : "0",
-        categoryCount24 : "0",
-        categoryCount20 : "0",
-        categoryCount22 : "0",
-        categoryCount26 : "0",
-        categoryCount27 : "0",
-        categoryCount1 : "0",
-        categoryCount17 : "0",
-        categoryCount28 : "0",
-        categoryCount23 : "0",
-        categoryCount2 : "0",
-        categoryCount25 : "0",
-        categoryCount19 : "0",
-        categoryCount15 : "0"
-      }
-    },
+    return {
+      sort: "desc",
+      searchQuery: "",
+      searchResults: [],
+      sortBy: "followers",
+      filter: [],
+      filterCountry: [],
+      errors: [],
+      date1: "2009-12-26",
+      date2: "2019-12-28",
+      min: minDate,
+      max: maxDate,
+      valueRangeVideos: "",
+      valueRangeFollowers: "",
+      followersUpper: "10000000",
+      followersLower: "1",
+      videoLower: "1",
+      videoUpper: "100000",
+      sugg: "",
+      page: "0",
+      treffer: "12",
+      active: "",
+      pmax: "2",
+      maxRes: 9999,
+      buckets: [],
+      categoryCount10: "0",
+      categoryCount24: "0",
+      categoryCount20: "0",
+      categoryCount22: "0",
+      categoryCount26: "0",
+      categoryCount27: "0",
+      categoryCount1: "0",
+      categoryCount17: "0",
+      categoryCount28: "0",
+      categoryCount23: "0",
+      categoryCount2: "0",
+      categoryCount25: "0",
+      categoryCount19: "0",
+      categoryCount15: "0",
+    };
+  },
 
+  methods: {
+    onSubmit() {
+      // TODO: NPM server
 
-
-    methods: {
-      onSubmit() {
-        // TODO: NPM server
-
-      console.log("sort: " + this.sort +" sortBy: "+ this.sortBy + " filters: " + this.filter);
+      console.log(
+        "sort: " +
+          this.sort +
+          " sortBy: " +
+          this.sortBy +
+          " filters: " +
+          this.filter
+      );
       //placeholder Variable
-      console.log(this.active)
-      var page = window.location.href.split("#")[1]
+      console.log(this.active);
+      var page = window.location.href.split("#")[1];
 
-      console.log(page)
+      console.log(page);
 
-        var datea = this.date1
-        var dateb = this.date2
+      var datea = this.date1;
+      var dateb = this.date2;
 
-      if(this.date1 > this.date2){
-         datea = this.date2
-         dateb = this.date1
+      if (this.date1 > this.date2) {
+        datea = this.date2;
+        dateb = this.date1;
       }
 
-        axios.get(host+":"+port+"/search?q="+this.searchQuery+"&order="+this.sort+"&by="+this.sortBy
-                  +"&filter="+this.filter+"&videoRange="+this.videoLower+"-"+this.videoUpper+"&date="+datea+";"+dateb+
-                  "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry+"&treffer="+this.treffer +"&page=" +page)
-          .then((response) => {
-             this.errors =[];
-             //this.sugg = response.data[0]._source.Suggestion;
-             //console.log(this.sugg);
-            if (response.data.hits.hits === null) {
-              this.searchResults = [];
-            } else {
-              this.searchResults = response.data.hits.hits;
-            }
-            this.pmax = response.data.aggregations.total.value / this.treffer
-                        if(response.data.aggregations.total.value % this.treffer > 0){
-              this.pmax +=1;
-            }
-            if(response.data.aggregations.total.value > this.maxRes){
-              this.pmax = this.maxRes/this.treffer
+      axios
+        .get(
+          host +
+            ":" +
+            port +
+            "/search?q=" +
+            this.searchQuery +
+            "&order=" +
+            this.sort +
+            "&by=" +
+            this.sortBy +
+            "&filter=" +
+            this.filter +
+            "&videoRange=" +
+            this.videoLower +
+            "-" +
+            this.videoUpper +
+            "&date=" +
+            datea +
+            ";" +
+            dateb +
+            "&follower=" +
+            this.followersLower +
+            "-" +
+            this.followersUpper +
+            "&country=" +
+            this.filterCountry +
+            "&treffer=" +
+            this.treffer +
+            "&page=" +
+            page
+        )
+        .then((response) => {
+          this.errors = [];
+          console.log(response);
+          //this.sugg = response.data[0]._source.Suggestion;
+          //console.log(this.sugg);
 
-            }
-            this.categoryCount10 = response.data.aggregations.count10.value
-            this.categoryCount24 = response.data.aggregations.count24.value
-            this.categoryCount20 = response.data.aggregations.count20.value
-            this.categoryCount22 = response.data.aggregations.count22.value
-            this.categoryCount26 = response.data.aggregations.count26.value
-            this.categoryCount27 = response.data.aggregations.count27.value
-            this.categoryCount1 = response.data.aggregations.count1.value
-            this.categoryCount17 = response.data.aggregations.count17.value
-            this.categoryCount28 = response.data.aggregations.count28.value
-            this.categoryCount23 = response.data.aggregations.count23.value
-            this.categoryCount2 = response.data.aggregations.count2.value
-            this.categoryCount25 = response.data.aggregations.count25.value
-            this.categoryCount19 = response.data.aggregations.count19.value
-            this.categoryCount15 = response.data.aggregations.count15.value
-            console.log(this.pmax);
-          })
-          .catch((error) => {
-            //window.alert("Backend not reachable on " + host + +  ":" + port, "Timeout");
-            this.errors = error;
-            if(error.message =="Network Error"){
-              this.errors.name ="while Waiting for Response from BackendServer on "
-              +host + ":" + port
-            }
-            this.searchResults = []
-          })
-      },
+          if (response.data.hits.hits === null) {
+            this.searchResults = [];
+          } else {
+            this.searchResults = response.data.hits.hits;
+          }
+          this.pmax = response.data.aggregations.total.value / this.treffer;
+          if (response.data.aggregations.total.value % this.treffer > 0) {
+            this.pmax += 1;
+          }
+          if (response.data.aggregations.total.value > this.maxRes) {
+            this.pmax = this.maxRes / this.treffer;
+          }
+          this.buckets = response.data.aggregations.totalCat.buckets;
+          this.updateBuckets();
 
-      resetCategoryFilters(){
-        this.filter = [];
-        this.onSubmit();
-      },
+          console.log(this.categoryCount10);
+          console.log(this.buckets);
 
-      resetCountryFilters(){
-        this.filterCountry = [];
-        this.onSubmit();
-      },
+          console.log(this.pmax);
+        })
 
-      hitsDropdown(value){
-        this.treffer = value;
-        this.onSubmit();
-      },
+        .catch((error) => {
+          //window.alert("Backend not reachable on " + host + +  ":" + port, "Timeout");
+          this.errors = error;
+          if (error.message == "Network Error") {
+            this.errors.name =
+              "while Waiting for Response from BackendServer on " +
+              host +
+              ":" +
+              port;
+          }
+          this.searchResults = [];
+        });
     },
 
-    beforeMount(){
+    resetCategoryFilters() {
+      this.filter = [];
       this.onSubmit();
-    }
-  }
+    },
+
+    updateBuckets() {
+      this.categoryCount10= 0;
+      this.categoryCount24= 0;
+      this.categoryCount20= 0;
+      this.categoryCount22= 0;
+      this.categoryCount26= 0;
+      this.categoryCount27= 0;
+     this.categoryCount1= 0;
+      this.categoryCount17= 0;
+      this.categoryCount28= 0;
+      this.categoryCount23= 0;
+     this.categoryCount2= 0;
+      this.categoryCount25= 0;
+      this.categoryCount19= 0;
+      this.categoryCount15= 0;
+      this.buckets.forEach((element) => {
+        switch (element.key) {
+          case 10:
+            this.categoryCount10 = element.doc_count;
+            break;
+          case 24:
+            this.categoryCount24 = element.doc_count;
+            break;
+          case 20:
+            this.categoryCount20 = element.doc_count;
+            break;
+          case 22:
+            this.categoryCount22 = element.doc_count;
+            break;
+          case 26:
+            this.categoryCount26 = element.doc_count;
+            break;
+          case 27:
+            this.categoryCount27 = element.doc_count;
+            break;
+          case 1:
+            this.categoryCount1 = element.doc_count;
+            break;
+          case 17:
+            this.categoryCount17 = element.doc_count;
+            break;
+          case 28:
+            this.categoryCount28 = element.doc_count;
+            break;
+          case 23:
+            this.categoryCount23 = element.doc_count;
+            break;
+          case 2:
+            this.categoryCount2 = element.doc_count;
+            break;
+          case 25:
+            this.categoryCount25 = element.doc_count;
+            break;
+          case 19:
+            this.categoryCount19 = element.doc_count;
+            break;
+          case 15:
+            this.categoryCount15 = element.doc_count;
+            break;
+        }
+      });
+    },
+
+    resetCountryFilters() {
+      this.filterCountry = [];
+      this.onSubmit();
+    },
+
+    hitsDropdown(value) {
+      this.treffer = value;
+      this.onSubmit();
+    },
+  },
+
+  beforeMount() {
+    this.onSubmit();
+  },
+};
 </script>
 
 
 
 <style >
-  @import '/assets/reset.css';
+@import "/assets/reset.css";
 </style>
