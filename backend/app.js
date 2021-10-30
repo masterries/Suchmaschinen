@@ -76,6 +76,7 @@ app.get('/search', function (req, res){
 
   //WIP: Temp Suggestion variable 
   sugg ="";
+  //Aufrümens
 
 
 
