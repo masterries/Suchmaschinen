@@ -130,8 +130,9 @@ asda
                 }}*/
 
                 console.log(results)
-                console.log("gesendet")
+               
                 res.send(results.hits.hits);
+                console.log("gesendet")
             }
 
 

@@ -322,8 +322,9 @@
       //placeholder Variable
       console.log(this.active)
       var page = window.location.href.split("#")[1]
-      
-        console.log(this.date2 + "Sdxasd" + this.date1);
+
+      console.log(page)
+
       
         var datea = this.date1
         var dateb = this.date2
@@ -342,9 +343,8 @@
                   "&follower="+this.followersLower+"-"+this.followersUpper+"&country="+this.filterCountry+"&treffer="+this.treffer +"&page=" +page)
           .then((response) => {
              this.errors =[];
-             this.sugg = response.data[0]._source.Suggestion;
-             console.log(this.sugg);
-            console.log(response )
+             //this.sugg = response.data[0]._source.Suggestion;
+             //console.log(this.sugg);
             if (response.data === null) {
               this.searchResults = [];
             } else {
@@ -375,19 +375,6 @@
       hitsDropdown(value){
         this.treffer = value;
         this.onSubmit();
-      },
-
-  //trying to display validation of the two dates but somethings off
-      onContext1(context){
-        if (context.date1 == null) {
-          this.dateValidation1 = null
-        }else{
-          if (context.date1 > this.date2) {
-            this.dateValidation1 = false
-          }else{
-            this.dateValidation1 = true
-          }
-        }      
       },
 
       onContext2(context){
