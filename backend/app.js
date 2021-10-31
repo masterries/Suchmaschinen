@@ -53,10 +53,9 @@ app.get('/search', function (req, res){
     filter["size"] = size;
     filter["page"] = page;
 
-    if (!checkValues(page,size,filter )){
-      res.send("Error")
+  
 
-    }else{
+   
       console.log(page);
 
     
@@ -66,8 +65,7 @@ app.get('/search', function (req, res){
       }else{
         // Search with keayword
           send(res,"match","title",name,filter,order,by1,req);
-      }  
-
+      
     }
 
 
@@ -133,7 +131,9 @@ app.get('/search', function (req, res){
 
             //if Fuzzy Search always send result back
             if(queryType== "fuzzy"){
-              res.send(results.hits.hits);
+              console.log(results)
+              res.send(results);
+              console.log("Fuzzy gesendet")
 
             }else if(results.hits.total.value ==0){
             //if Normal Match Search is empty then doing a Fuzzy search

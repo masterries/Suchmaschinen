@@ -274,7 +274,7 @@
 import resultCard from "./components/ResultCard.vue";
 import searchbar from "./components/Searchbar.vue";
 import axios from "axios";
-const host = "http://ec2-54-196-94-19.compute-1.amazonaws.com/";
+const host = "http://localhost";
 const port = "5050";
 
 export default {
@@ -410,6 +410,8 @@ export default {
           console.log(response);
           //this.sugg = response.data[0]._source.Suggestion;
           //console.log(this.sugg);
+          console.log(response.data)
+          
 
           if (response.data.hits.hits === null) {
             this.searchResults = [];
