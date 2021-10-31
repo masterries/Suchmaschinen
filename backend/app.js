@@ -79,26 +79,24 @@ app.get('/search', function (req, res){
   function checkValues(page,size,filter){
 
     console.log(filter["follower"][0])
-    var follower = (isBetween(1,100000000,filter["follower"][0]))&&(isBetween(1,100000000,filter["follower"][1]));
+    var follower = (isBetween(1,1000000000,filter["follower"][0]))&&(isBetween(1,1000000000,filter["follower"][1]));
     var videos = (isBetween(1,1000000,filter["video"][0]))&&(isBetween(1,1000000,filter["video"][1]));
     var date  = isDate(filter["date"][0])&&isDate(filter["date"][1]);
-    var i = (isBetween(1,1000,size))&&(isBetween(1,10000,page));
+    var i = (isBetween(1,1000,size))
     return i && follower&&videos&&date;
     
   }
 
   function isBetween(min, max, input){
-    console.log("input " + input)
     if(!isInt(input)){
-      console.log("hass")
       return false;
     }
       if(input > max){
-        console.log("max")
+        console.log("max" + input)
         return false;
       }
       if(input< min){
-        console.log("min")
+        console.log("min" + input)
         return false;
       }
       return true;
