@@ -7,6 +7,8 @@
 
 http://ycs.riespatrick.de/    
 
+(Backend ist abgeschaltet worden, deswegen keine Suchergebnisse mehr)
+
 # todo Allgemein
 
 :white_check_mark: Funktionalität, Suchen mit Fehlerakzeptanz (aktuell von Hamming Abstand von 2)   
@@ -17,11 +19,11 @@ http://ycs.riespatrick.de/
 
 
 ## Bonus
-:white_large_square: auf die Cards klicken, dann wird der Kanal Beschreibung angezeigt zu werden  
+:white_large_square: auf die Cards klicken, dann wird der Kanal Beschreibung angezeigt zu werden [Nicht Implementiert]  
 :white_check_mark: Basis 10 Elemente neue Seiten mit Formm 10 - 20 (size)   
 :white_check_mark: Live Suche :shipit:  
-:white_large_square: :heavy_dollar_sign: Live autokomplition  
-:white_large_square: :heavy_dollar_sign: `type ahead` Vorschläge mehre Anzeigen in Liste  
+:white_check_mark :heavy_dollar_sign: Live autokomplition  
+:white_check_mark :heavy_dollar_sign: `type ahead` Vorschläge mehre Anzeigen in Liste  
 :white_check_mark: Filter Dropdown Artig (ein Button für alles?)Platzsparender  
 
 
@@ -37,7 +39,7 @@ http://ycs.riespatrick.de/
 :white_check_mark: Zurücksetzten aller Filter Button  
 :white_check_mark: Einfügen von Dropdown im Anzahl treffer zu definieren
 :white_check_mark: Allgemeines Desing anpassen      
-:white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird    
+:white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird   [Nicht Implementiert]     
 :white_check_mark: Fixen von Empty Pictures   
 :white_check_mark: Ausblenden wenn Land nicht vorhanden ist
 :white_check_mark: Fixen des "Search"-Buttons in der Suchleiste. Trotz "append" ist Platz zwischen Leiste und Knopf
