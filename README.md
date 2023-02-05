@@ -32,17 +32,17 @@ http://ycs.riespatrick.de/
 :white_check_mark: Error Handling Server   
 :white_check_mark: Bei Starten der Seite gleich Inhalte laden (load on Startup)   
 :white_check_mark: Einfügen eigener CSS   
-:white_check_mark: Einfügen von Filter nach Join Datum Range
-:white_check_mark: Einfügen von Filter nach Video Range
-:white_check_mark: Einfügen von Filter nach Follower Range
-:white_check_mark: Einfügen von Filter nach Land
-:white_check_mark: Zurücksetzten aller Filter Button  
-:white_check_mark: Einfügen von Dropdown im Anzahl treffer zu definieren
-:white_check_mark: Allgemeines Desing anpassen      
-:white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird   [Nicht Implementiert]     
-:white_check_mark: Fixen von Empty Pictures   
-:white_check_mark: Ausblenden wenn Land nicht vorhanden ist
-:white_check_mark: Fixen des "Search"-Buttons in der Suchleiste. Trotz "append" ist Platz zwischen Leiste und Knopf
+:white_check_mark: Einfügen von Filter nach Join Datum Range  
+:white_check_mark: Einfügen von Filter nach Video Range  
+:white_check_mark: Einfügen von Filter nach Follower Range  
+:white_check_mark: Einfügen von Filter nach Land  
+:white_check_mark: Zurücksetzten aller Filter Button    
+:white_check_mark: Einfügen von Dropdown im Anzahl treffer zu definieren  
+:white_check_mark: Allgemeines Desing anpassen        
+:white_large_square: Anzeige eines alternativen Suchbegriffs, der vom Backend vorgeschlagen wird   [Nicht Implementiert]       
+:white_check_mark: Fixen von Empty Pictures     
+:white_check_mark: Ausblenden wenn Land nicht vorhanden ist  
+:white_check_mark: Fixen des "Search"-Buttons in der Suchleiste. Trotz "append" ist Platz zwischen Leiste und Knopf  
 
 Suche muss man über query die currentPage holen die diese immer von vorher ist 
 ![alt text](https://i.imgur.com/ZZSaAtB.png) 
