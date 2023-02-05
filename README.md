@@ -22,8 +22,8 @@ http://ycs.riespatrick.de/
 :white_large_square: auf die Cards klicken, dann wird der Kanal Beschreibung angezeigt zu werden [Nicht Implementiert]  
 :white_check_mark: Basis 10 Elemente neue Seiten mit Formm 10 - 20 (size)   
 :white_check_mark: Live Suche :shipit:  
-:white_check_mark :heavy_dollar_sign: Live autokomplition  
-:white_check_mark :heavy_dollar_sign: `type ahead` Vorschläge mehre Anzeigen in Liste  
+:white_check_mark: Live autokomplition  
+:white_check_mark: `type ahead` Vorschläge mehre Anzeigen in Liste  
 :white_check_mark: Filter Dropdown Artig (ein Button für alles?)Platzsparender  
 
 
